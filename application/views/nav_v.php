@@ -7,27 +7,30 @@
          <img src="<?= base_url('assets/img/brand/blue.png" class="navbar-brand-img') ?>" alt="...">
        </a>
      </div>
+
+
      <div class="navbar-inner">
        <!-- Collapse -->
        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
          <!-- Nav items -->
          <ul class="navbar-nav">
+
            <li class="nav-item">
-             <a class="nav-link active" href="examples/dashboard.html">
+             <a class="nav-link active" href="<?= site_url('home') ?>">
                <i class="ni ni-tv-2 text-primary"></i>
                <span class="nav-link-text">Dashboard</span>
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="examples/icons.html">
-               <i class="ni ni-planet text-orange"></i>
-               <span class="nav-link-text">Icons</span>
+             <a class="nav-link" href="<?= site_url('consumer/req') ?>">
+               <i class="ni ni-send text-primary"></i>
+               <span class="nav-link-text">Pengajuan</span>
              </a>
            </li>
            <li class="nav-item">
-             <a class="nav-link" href="examples/map.html">
-               <i class="ni ni-pin-3 text-primary"></i>
-               <span class="nav-link-text">Google</span>
+             <a class="nav-link" href="examples/icons.html">
+               <i class="ni ni-money-coins text-orange"></i>
+               <span class="nav-link-text">Riwayat Pengajuan</span>
              </a>
            </li>
            <li class="nav-item">

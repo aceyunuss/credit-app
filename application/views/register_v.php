@@ -90,7 +90,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Alamat" type="text" name="addr" required>
+                    <textarea rows="3" class="form-control" placeholder="Alamat" type="text" name="addr" required></textarea>
                   </div>
                 </div>
                 <div class="form-group">
@@ -98,9 +98,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                     </div>
-                    <abbr title="Tanggal lahir">
-                      <input class="form-control" placeholder="dob" type="datetime-local" name="dob" required>
-                    </abbr>
+                    <input class="form-control" placeholder="dob" type="datetime-local" name="dob" required data-toggle="tooltip" data-placement="right" title="Tanggal Lahir">
                   </div>
                 </div>
                 <div class="form-group">

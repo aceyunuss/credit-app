@@ -6,7 +6,7 @@ class Auth extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['Auth_m']);
+    $this->load->model(['User_m']);
     $this->load->library('email');
   }
 
@@ -43,7 +43,7 @@ class Auth extends Core_Controller
       $email = $this->input->post('email');
       $pass = md5($this->input->post('pass'));
 
-      $user = $this->Auth_m->getUser($email, $pass)->row_array();
+      $user = $this->User_m->getUser($email, $pass)->row_array();
 
       if (empty($user)) {
         $this->session->set_userdata('result', 'Email dan password tidak cocok. Silahkan cek kembali');
@@ -57,7 +57,7 @@ class Auth extends Core_Controller
 
       $this->session->set_userdata($data_session);
 
-      redirect('auth');
+      redirect('home');
     }
   }
 
@@ -84,12 +84,13 @@ class Auth extends Core_Controller
       'birthdate'     => $birthdate,
       'gender'        => $post['gender'],
       'password'      => md5($post['pass']),
-      'created_date'  => date("Y-m-d H:i:s")
+      'created_date'  => date("Y-m-d H:i:s"),
+      'updated_date'  => date("Y-m-d H:i:s")
     ];
 
     $this->db->trans_begin();
 
-    $this->Auth_m->createUser($ins);
+    $this->User_m->createUser($ins);
 
     if ($this->db->trans_status() !== FALSE) {
       $this->db->trans_commit();
@@ -102,7 +103,7 @@ class Auth extends Core_Controller
     }
   }
 
-  
+
   public function forgot()
   {
     $data['title'] = "Online Learning - Forgot Password";
@@ -127,7 +128,7 @@ class Auth extends Core_Controller
 
     $this->db->trans_begin();
 
-    $this->Auth_m->changePassword($user_id, $password);
+    $this->User_m->changePassword($user_id, $password);
 
     if ($this->db->trans_status() !== FALSE) {
       $this->db->trans_commit();
@@ -137,5 +138,44 @@ class Auth extends Core_Controller
       $this->db->trans_rollback();
       // $this->session->set_userdata('result', 'Gagal mengubah materi');
     }
+  }
+
+  public function profile()
+  {
+    $user = $this->session->userdata();
+    $data['profile'] = $this->User_m->getUserById($user['user_id'])->row_array();
+    $this->template("profile_v", "Profil", $data);
+  }
+
+
+  public function submitEditProfile()
+  {
+    $post = $this->input->post();
+
+    $birthdate_str = strtotime($post['dob']);
+    $birthdate = date('Y-m-d', $birthdate_str);
+
+    $ins = [
+      'fullname'      => $post['name'],
+      'email'         => $post['email'],
+      'phone'         => $post['phone'],
+      'address'       => $post['addr'],
+      'birthdate'     => $birthdate,
+      'gender'        => $post['gender'],
+      'updated_date'  => date("Y-m-d H:i:s")
+    ];
+
+    $this->db->trans_begin();
+
+    $this->User_m->updateuser($post['user_id'], $ins);
+
+    if ($this->db->trans_status() !== FALSE) {
+      $this->db->trans_commit();
+      $this->session->set_userdata('result', 'Sukses mengubah profil');
+    } else {
+      $this->db->trans_rollback();
+      $this->session->set_userdata('result', 'Gagal mengubah profil');
+    }
+    redirect('auth/profile');
   }
 }

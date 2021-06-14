@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Auth_m extends CI_Model
+class User_m extends CI_Model
 {
   function __construct()
   {
@@ -19,11 +19,6 @@ class Auth_m extends CI_Model
     return $this->db->get("adm_user");
   }
 
-  public function getSecurityQuestion()
-  {
-    return $this->db->get("adm_question");
-  }
-
   public function getUserByEmail($email)
   {
     $this->db->where(['email' => $email]);
@@ -36,15 +31,16 @@ class Auth_m extends CI_Model
     return $this->db->get("adm_user");
   }
 
-  public function getQuestion($id)
-  {
-    $this->db->where(['id' => $id]);
-    return $this->db->get("adm_question");
-  }
-
   public function changePassword($id, $password)
   {
     $this->db->set(['password' => $password]);
     $this->db->where(['id' => $id])->update('adm_user');
+    return $this->db->affected_rows();
+  }
+
+  public function updateUser($id, $data)
+  {
+    $this->db->where(['id' => $id])->update('adm_user', $data);
+    return $this->db->affected_rows();
   }
 }

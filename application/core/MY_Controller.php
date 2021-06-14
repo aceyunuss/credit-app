@@ -12,7 +12,8 @@ class Core_Controller extends CI_Controller
   {
 
     $dita['content'] = $view;
-    $dita['site_title'] = "CreditApp - " . $title;
+    $dita['site_title'] = "CreditApp";
+    $dita['site_subtitle'] = $title;
 
     $pass = array_merge($dita, $data);
 

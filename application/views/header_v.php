@@ -2,7 +2,9 @@
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+      <div class="mb-0">
+        <h6 class="h2 text-white d-inline-block mb-0"><?= $site_subtitle ?></h6>
+      </div>
       <!-- Navbar links -->
       <ul class="navbar-nav align-items-center  ml-md-auto ">
         <li class="nav-item d-xl-none">
@@ -35,29 +37,18 @@
             </div>
           </a>
           <div class="dropdown-menu  dropdown-menu-right ">
-            <div class="dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Welcome!</h6>
-            </div>
-            <a href="#!" class="dropdown-item">
+            <a href="<?= site_url('auth/profile') ?>" class="dropdown-item">
               <i class="ni ni-single-02"></i>
-              <span>My profile</span>
+              <span>Profil</span>
             </a>
-            <a href="#!" class="dropdown-item">
+            <a href="<?= site_url('auth/out') ?>" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
-              <span>Settings</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
+              <span>Ubah Password</span>
             </a>
             <div class="dropdown-divider"></div>
             <a href="<?= site_url('auth/out') ?>" class="dropdown-item">
               <i class="ni ni-user-run"></i>
-              <span>Logout</span>
+              <span>Keluar</span>
             </a>
           </div>
         </li>
