@@ -9,7 +9,6 @@ class Auth_m extends CI_Model
 
   public function createUser($input)
   {
-    // print_r($input);
     $this->db->insert("adm_user", $input);
     return $this->db->affected_rows();
   }

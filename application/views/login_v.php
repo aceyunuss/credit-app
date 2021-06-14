@@ -17,16 +17,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title><?= $title ?></title>
   <!-- Favicon -->
-  <link rel="icon" href="<?= base_url('assets/img/brand/favicon.png')?>" type="image/png">
+  <!-- <link rel="icon" href="<?= base_url('assets/img/brand/favicon.png') ?>" type="image/png"> -->
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="<?= base_url('assets/vendor/nucleo/css/nucleo.css')?>" type="text/css">
-  <link rel="stylesheet" href="<?= base_url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')?>" type="text/css">
+  <link rel="stylesheet" href="<?= base_url('assets/vendor/nucleo/css/nucleo.css') ?>" type="text/css">
+  <link rel="stylesheet" href="<?= base_url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') ?>" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="<?= base_url('assets/css/argon.css?v=1.2.0')?>" type="text/css">
+  <link rel="stylesheet" href="<?= base_url('assets/css/argon.css?v=1.2.0') ?>" type="text/css">
 </head>
 
 <body class="bg-default">
@@ -34,7 +34,7 @@
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-6 pt-lg-9">
+    <div class="header bg-gradient-info py-7 py-lg-6 pt-lg-9">
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
@@ -45,10 +45,23 @@
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
+
+          <?php if (!empty($this->session->userdata('result'))) {
+            $type = (strpos($this->session->userdata('result'), 'Sukses') !== false) ? "success" : "danger";  ?>
+            <div class="alert alert-<?= $type ?> alert-dismissible fade show" role="alert">
+              <span class="alert-text"><?= $this->session->userdata('result'); ?></span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php $this->session->unset_userdata("result");
+          } ?>
+
           <div class="card bg-secondary border-0 mb-0">
+
             <div class="card-body px-lg-5 py-lg-5">
-              
-              <form role="form">
+
+              <form role="form" method="POST" action="<?= site_url('auth/login') ?>">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
@@ -66,7 +79,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
+                  <button type="submit" class="btn btn-info my-4">Sign in</button>
                 </div>
               </form>
             </div>
@@ -76,7 +89,7 @@
               <a href="#" class="text-light"><small>Forgot password?</small></a>
             </div>
             <div class="col-6 text-right">
-              <a href="<?= site_url('auth/register')?>" class="text-light"><small>Create new account</small></a>
+              <a href="<?= site_url('auth/register') ?>" class="text-light"><small>Create new account</small></a>
             </div>
           </div>
         </div>
@@ -113,13 +126,13 @@
   </footer>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="<?= base_url('assets/vendor/jquery/dist/jquery.min.js')?>"></script>
-  <script src="<?= base_url('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')?>"></script>
-  <script src="<?= base_url('assets/vendor/js-cookie/js.cookie.js')?>"></script>
-  <script src="<?= base_url('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')?>"></script>
-  <script src="<?= base_url('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')?>"></script>
+  <script src="<?= base_url('assets/vendor/jquery/dist/jquery.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/js-cookie/js.cookie.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') ?>"></script>
   <!-- Argon JS -->
-  <script src="<?= base_url('assets/js/argon.js?v=1.2.0')?>"></script>
+  <script src="<?= base_url('assets/js/argon.js?v=1.2.0') ?>"></script>
 </body>
 
 </html>

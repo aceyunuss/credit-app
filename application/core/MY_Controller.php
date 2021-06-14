@@ -12,11 +12,11 @@ class Core_Controller extends CI_Controller
   {
 
     $dita['content'] = $view;
-    $dita['site_title'] = "Online Learning - " . $title;
+    $dita['site_title'] = "CreditApp - " . $title;
 
     $pass = array_merge($dita, $data);
 
-    $this->load->view('v_core', $pass);
+    $this->load->view('template_v', $pass);
   }
 
   public function ups($input)

@@ -12,107 +12,78 @@ class Auth extends Core_Controller
 
   public function index()
   {
-    if ($this->session->userdata('type') == 'teacher') {
-      redirect('pengajar');
-    } elseif ($this->session->userdata('type') == 'student') {
-      redirect('murid');
+    if (!empty($this->session->userdata('user_id'))) {
+      $this->template('dashboard_v', "Dashboard");
     } else {
-      $this->session->sess_destroy();
-      // $security = $this->Auth_m->getSecurityQuestion()->result_array();
-      // $data['title'] = "Online Learning";
-      // $data['security_question'] = $security;
-      // $this->load->view("components/header", $data);
-      $this->load->view("login_v");
-      // $this->load->view("components/footer");
+      $data['title'] = "Credit Apps - Login";
+      $this->load->view("login_v", $data);
     }
   }
 
   public function login()
   {
-
-    $validation_config = array(
-      array(
-        'field' => 'email_login',
+    $validation_config = [
+      [
+        'field' => 'email',
         'label' => 'Email',
         'rules' => 'required'
-      ),
-      array(
-        'field' => 'password_login',
+      ],
+      [
+        'field' => 'pass',
         'label' => 'Password',
         'rules' => 'required'
-      ),
-    );
-    // $this->form_validation->set_rules('email_login', 'Email', 'required');
-    // $this->form_validation->set_rules('password_login', 'Password', 'required');
+      ],
+    ];
+
     $this->form_validation->set_rules($validation_config);
 
     if ($this->form_validation->run() == false) {
-      $this->session->set_userdata('err_login_form', 'Email dan password harus diisi.');
-      redirect('auth');
-
-      // $data['title'] = "Online Learning";
-      // $this->load->view("components/header", $data);
-      // $this->load->view("v_login");
-      // $this->load->view("components/footer");
+      $this->session->set_userdata('result', 'Email dan password harus diisi.');
     } else {
-      $email = $this->input->post('email_login');
-      $pass = md5($this->input->post('password_login'));
+      $email = $this->input->post('email');
+      $pass = md5($this->input->post('pass'));
 
       $user = $this->Auth_m->getUser($email, $pass)->row_array();
 
       if (empty($user)) {
-        $this->session->set_userdata('login', 'Email dan password tidak cocok. Silahkan cek kembali');
-        redirect('auth');
-      }
-
-      if ($user['type'] == 's') {
-        $type = 'student';
-      } else {
-        $type = 'teacher';
+        $this->session->set_userdata('result', 'Email dan password tidak cocok. Silahkan cek kembali');
       }
 
       $data_session = array(
         'user_id' => $user['id'],
-        'type' => $type,
+        // 'type' => $type,
         'name' => $user['fullname']
       );
 
       $this->session->set_userdata($data_session);
 
-      if ($type == 'student') {
-        $data['name'] = $user['fullname'];
-        redirect('murid');
-      } elseif ($type == 'teacher') {
-        $data['name'] = $user['fullname'];
-        redirect('pengajar');
-      }
+      redirect('auth');
     }
   }
 
-  public function logout()
+
+  public function out()
   {
     $this->session->sess_destroy();
     redirect('auth');
   }
 
+
   public function submitRegist()
   {
     $post = $this->input->post();
 
-    $birthdate_str = strtotime($post['birthdate']);
+    $birthdate_str = strtotime($post['dob']);
     $birthdate = date('Y-m-d', $birthdate_str);
 
     $ins = [
-      'email'          => $post['email'],
-      'fullname'      => $post['fullname'],
-      'password'      => md5($post['password']),
-      'type'          => $post['type'],
-      'phone'          => $post['phone'],
-      'address'        => $post['address'],
+      'fullname'      => $post['name'],
+      'email'         => $post['email'],
+      'phone'         => $post['phone'],
+      'address'       => $post['addr'],
+      'birthdate'     => $birthdate,
       'gender'        => $post['gender'],
-      'birthdate'      => $birthdate,
-      'question_id'    => $post['question'],
-      'answer'        => $post['answer'],
+      'password'      => md5($post['pass']),
       'created_date'  => date("Y-m-d H:i:s")
     ];
 
@@ -123,14 +94,15 @@ class Auth extends Core_Controller
     if ($this->db->trans_status() !== FALSE) {
       $this->db->trans_commit();
       $this->session->set_userdata('result', 'Sukses membuat akun');
+      redirect('auth');
     } else {
       $this->db->trans_rollback();
       $this->session->set_userdata('result', 'Gagal membuat akun');
+      redirect('auth/register');
     }
-
-    redirect('auth');
   }
 
+  
   public function forgot()
   {
     $data['title'] = "Online Learning - Forgot Password";
@@ -141,7 +113,8 @@ class Auth extends Core_Controller
 
   public function register()
   {
-    $this->load->view('register_v');
+    $data['title'] = "Credit Apps - Register";
+    $this->load->view('register_v', $data);
   }
 
   public function changePassword()

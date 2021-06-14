@@ -17,9 +17,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title><?= $title ?></title>
   <!-- Favicon -->
-  <link rel="icon" href="<?= base_url('assets/img/brand/favicon.png') ?>" type="image/png">
+  <!-- <link rel="icon" href="<?= base_url('assets/img/brand/favicon.png') ?>" type="image/png"> -->
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -34,7 +34,7 @@
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-6 pt-lg-9">
+    <div class="header bg-gradient-info py-7 py-lg-6 pt-lg-9">
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
@@ -46,6 +46,16 @@
       <!-- Table -->
       <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
+          <?php if (!empty($this->session->userdata('result'))) { ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+              <span class="alert-text"><?= $this->session->userdata('result'); ?></span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php $this->session->unset_userdata("result");
+          } ?>
           <div class="card bg-secondary border-0">
 
             <div class="card-body px-lg-5 py-lg-5">
@@ -72,7 +82,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                     </div>
-                    <input class="form-control" placeholder="No Telp" type="text" name="phone" required>
+                    <input class="form-control" placeholder="No Telp" type="number" name="phone" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -81,6 +91,16 @@
                       <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
                     </div>
                     <input class="form-control" placeholder="Alamat" type="text" name="addr" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <abbr title="Tanggal lahir">
+                      <input class="form-control" placeholder="dob" type="datetime-local" name="dob" required>
+                    </abbr>
                   </div>
                 </div>
                 <div class="form-group">
@@ -99,7 +119,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
+                  <button type="submit" class="btn btn-info mt-4">Create account</button>
                 </div>
               </form>
             </div>
@@ -150,6 +170,14 @@
   <script src="<?= base_url('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') ?>"></script>
   <!-- Argon JS -->
   <script src="<?= base_url('assets/js/argon.js?v=1.2.0') ?>"></script>
+  <script>
+    $(document).ready(function() {
+      $('input[type="number"]').attr({
+        min: "0",
+        oninput: "this.value = Math.abs(this.value)"
+      });
+    });
+  </script>
 </body>
 
 </html>
