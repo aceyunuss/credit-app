@@ -17,6 +17,7 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="<?= base_url('assets/css/argon.css?v=1.2.0" type="text/css') ?>">
+  <script src="<?= base_url('assets/vendor/jquery/dist/jquery.min.js') ?>"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="<?= base_url('assets/vendor/jquery/dist/jquery.min.js') ?>"></script>
+
   <script src="<?= base_url('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
   <script src="<?= base_url('assets/vendor/js-cookie/js.cookie.js') ?>"></script>
   <script src="<?= base_url('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') ?>"></script>
@@ -42,6 +43,16 @@
   <script src="<?= base_url('assets/vendor/chart.js/dist/Chart.extension.js') ?>"></script>
   <!-- Argon JS -->
   <script src="<?= base_url('assets/js/argon.js?v=1.2.0') ?>"></script>
+
+
+  <script>
+    $(document).ready(function() {
+      let act = $('#act_menu').val();
+      console.log(act)
+      $('.' + act).addClass('active');
+    });
+  </script>
+  
 </body>
 
 </html>

@@ -8,6 +8,7 @@
        </a>
      </div>
 
+     <input type="hidden" id="act_menu" value="<?= $this->uri->segment(1); ?>">
 
      <div class="navbar-inner">
        <!-- Collapse -->
@@ -15,52 +16,52 @@
          <!-- Nav items -->
          <ul class="navbar-nav">
 
-           <li class="nav-item">
-             <a class="nav-link active" href="<?= site_url('home') ?>">
+           <li class="nav-item home">
+             <a class="nav-link home" href="<?= site_url('home') ?>">
                <i class="ni ni-tv-2 text-primary"></i>
                <span class="nav-link-text">Dashboard</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="<?= site_url('consumer/req') ?>">
-               <i class="ni ni-send text-primary"></i>
+           <li class="nav-item submission">
+             <a class="nav-link submission" href="<?= site_url('submission') ?>">
+               <i class="ni ni-send text-info"></i>
                <span class="nav-link-text">Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="examples/icons.html">
-               <i class="ni ni-money-coins text-orange"></i>
+           <li class="nav-item submissionhist">
+             <a class="nav-link submissionhist" href="<?= site_url('submissionhist') ?>">
+               <i class="ni ni-book-bookmark text-warning"></i>
                <span class="nav-link-text">Riwayat Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="examples/profile.html">
-               <i class="ni ni-single-02 text-yellow"></i>
-               <span class="nav-link-text">Profile</span>
+           <li class="nav-item users">
+             <a class="nav-link users" href="<?= site_url('users') ?>">
+               <i class="ni ni-single-02 text-pink"></i>
+               <span class="nav-link-text">Daftar User</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="examples/tables.html">
-               <i class="ni ni-bullet-list-67 text-default"></i>
-               <span class="nav-link-text">Tables</span>
+           <li class="nav-item assessment">
+             <a class="nav-link assessment" href="<?= site_url('assessment') ?>">
+               <i class="ni ni-ruler-pencil text-danger"></i>
+               <span class="nav-link-text">Penilaian</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="examples/login.html">
-               <i class="ni ni-key-25 text-info"></i>
-               <span class="nav-link-text">Login</span>
+           <li class="nav-item assessmentresult">
+             <a class="nav-link assessmentresult" href="<?= site_url('assessmentresult') ?>">
+               <i class="ni ni-paper-diploma text-primary"></i>
+               <span class="nav-link-text">Hasil Penilaian</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="examples/register.html">
-               <i class="ni ni-circle-08 text-pink"></i>
-               <span class="nav-link-text">Register</span>
+           <li class="nav-item submissionreport">
+             <a class="nav-link submissionreport" href="<?= site_url('submissionreport') ?>">
+               <i class="ni ni-money-coins text-green"></i>
+               <span class="nav-link-text">Laporan Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item">
-             <a class="nav-link" href="examples/upgrade.html">
-               <i class="ni ni-send text-dark"></i>
-               <span class="nav-link-text">Upgrade</span>
+           <li class="nav-item assessmentcriteria">
+             <a class="nav-link assessmentcriteria" href="<?= site_url('assessmentcriteria') ?>">
+               <i class="ni ni-settings-gear-65 text-danger"></i>
+               <span class="nav-link-text">Kriteria Penilaian</span>
              </a>
            </li>
          </ul>

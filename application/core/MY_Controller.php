@@ -11,11 +11,11 @@ class Core_Controller extends CI_Controller
   public function template($view = "", $title = "", $data = [])
   {
 
-    $dita['content'] = $view;
-    $dita['site_title'] = "CreditApp";
-    $dita['site_subtitle'] = $title;
+    $dta['content'] = $view;
+    $dta['site_title'] = "Credtapp";
+    $dta['site_subtitle'] = $title;
 
-    $pass = array_merge($dita, $data);
+    $pass = array_merge($dta, $data);
 
     $this->load->view('template_v', $pass);
   }
