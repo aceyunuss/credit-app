@@ -50,6 +50,13 @@
 
   <script>
     $(document).ready(function() {
+
+      $('input[type="number"]').attr({
+        min: "0",
+        oninput: "this.value = Math.abs(this.value)"
+      });
+
+
       let act = $('#act_menu').val();
       console.log(act)
       $('.' + act).addClass('active');
