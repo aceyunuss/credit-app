@@ -12,6 +12,8 @@ class Users extends Core_Controller
 
   public function index()
   {
-    $this->template("consumer/req_v", "Pengajuan");
+    $data['list_user'] = $this->User_m->getUser()->result_array();
+
+    $this->template("users_v", "Pengguna Aplikasi", $data);
   }
 }

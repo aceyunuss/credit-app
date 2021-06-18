@@ -6,12 +6,20 @@ class AssessmentCriteria extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m']);
+    $this->load->model(['User_m', 'Criteria_m']);
     $this->load->library('email');
   }
 
   public function index()
   {
-    $this->template("consumer/req_v", "Pengajuan");
+    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
+    $this->template("criteria_v", "Kriteria Penilaian", $data);
+  }
+
+
+  public function updateCriteria($id)
+  {
+    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
+    $this->template("criteria_index_v", "Indeks Penilaian", $data);
   }
 }

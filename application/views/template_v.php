@@ -45,6 +45,9 @@
   <script src="<?= base_url('assets/js/argon.js?v=1.2.0') ?>"></script>
 
 
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap.min.js"></script>
+
   <script>
     $(document).ready(function() {
       let act = $('#act_menu').val();
@@ -52,7 +55,7 @@
       $('.' + act).addClass('active');
     });
   </script>
-  
+
 </body>
 
 </html>

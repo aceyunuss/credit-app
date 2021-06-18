@@ -43,7 +43,7 @@ class Auth extends Core_Controller
       $email = $this->input->post('email');
       $pass = md5($this->input->post('pass'));
 
-      $user = $this->User_m->getUser($email, $pass)->row_array();
+      $user = $this->User_m->getUserLogin($email, $pass)->row_array();
 
       if (empty($user)) {
         $this->session->set_userdata('result', 'Email dan password tidak cocok. Silahkan cek kembali');

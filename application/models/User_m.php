@@ -13,7 +13,12 @@ class User_m extends CI_Model
     return $this->db->affected_rows();
   }
 
-  public function getUser($email, $password)
+  public function getUser()
+  {
+    return $this->db->get("adm_user");
+  }
+
+  public function getUserLogin($email, $password)
   {
     $this->db->where(['email' => $email, 'password' => $password]);
     return $this->db->get("adm_user");
