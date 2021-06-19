@@ -10,6 +10,7 @@ class AssessmentCriteria extends Core_Controller
     $this->load->library('email');
   }
 
+
   public function index()
   {
     $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
@@ -19,7 +20,17 @@ class AssessmentCriteria extends Core_Controller
 
   public function updateCriteria($id)
   {
-    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
+    $data['criteria'] = $this->Criteria_m->getCriteria($id)->row_array();
     $this->template("criteria_index_v", "Indeks Penilaian", $data);
+  }
+
+
+  public function submitEditIndex()
+  {
+
+    $post = $this->input->post();
+    echo '<pre>';
+    var_dump($post);
+    die();
   }
 }

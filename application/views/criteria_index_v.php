@@ -21,6 +21,7 @@
                 <div class="form-group">
                   <label class="form-control-label" for="input-username">Deskripsi</label>
                   <input type="text" id="idesc" class="form-control idxform" value="" name="name">
+                  <input type="hidden" id="idx" class="form-control idxform" value="" name="ix">
                 </div>
               </div>
             </div>
@@ -87,6 +88,8 @@
 
       let d = $('#idesc').val()
       let v = $('#ival').val()
+      let i = $('#idx').val() == "" ? $('.tbl_idx tr:last').length + 9000 : $('#idx').val()
+      console.log(i)
 
       if (d == "" || v == "") {
 
@@ -108,6 +111,7 @@
           let rw = "<tr>\
                       <td class='nm'>\
                         <input type='hidden' name='desc[]' value='" + d + "'>" + d + "\
+                        <input type='hidden' name='idx[]' value='" + i + "'>\
                       </td>\
                       <td class='vl' align='center'>\
                         <input type='hidden' name='val[]' value='" + v + "'>" + v + "\
