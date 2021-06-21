@@ -16,4 +16,10 @@ class Users extends Core_Controller
 
     $this->template("users_v", "Pengguna Aplikasi", $data);
   }
+
+  public function detail($id)
+  {
+    $data['usr'] = $this->User_m->getUserbyId($id)->row_array();
+    $this->template("detail_user_v", "Detail Pengguna Aplikasi", $data);
+  }
 }
