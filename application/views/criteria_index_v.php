@@ -115,7 +115,7 @@
 
       let d = $('#idesc').val()
       let v = $('#ival').val()
-      let i = $('.tbl_idx tr:last').length + 2;
+      let i = $('.tbl_idx tr').length + 1;
       let idx = $('#idx').val()
 
       if (d == "" || v == "") {
