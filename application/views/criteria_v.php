@@ -23,7 +23,7 @@
             <?php foreach ((array)$criteria as $key => $value) { ?>
               <tr>
                 <td align="center">
-                  <a href="<?= site_url('assessmentcriteria/updatecriteria/') . $value['id'] ?>" class="btn btn-info btn-sm">Ubah </a>
+                  <a href="<?= site_url('assessmentcriteria/updatecriteria/') . $value['id'] ?>" class="btn btn-info btn-sm">Atur Bobot </a>
                 </td>
                 <td align="center"><?= $value['code'] ?></td>
                 <td ><?= $value['desc'] ?></td>

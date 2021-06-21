@@ -25,7 +25,7 @@ class Criteria_m extends CI_Model
     if (!empty($cid)) {
       $this->db->where(['cid' => $cid]);
     }
-    return $this->db->get("adm_criteria");
+    return $this->db->get("adm_index");
   }
 
 
@@ -49,7 +49,7 @@ class Criteria_m extends CI_Model
 
       if (!empty($id)) {
 
-        $check = $this->getCriteria($id, $input['cid'])->row_array();
+        $check = $this->getIndexCriteria($id, $input['cid'])->row_array();
 
         if (!empty($check)) {
 
@@ -68,6 +68,15 @@ class Criteria_m extends CI_Model
       }
 
       return $last_id;
+    }
+  }
+
+
+  public function deleteIfNotExistIndex($id, $deleted)
+  {
+    if (!empty($id) && !empty($deleted)) {
+      $this->db->where_not_in("id", $deleted)->where("cid", $id)->delete("adm_index");
+      return $this->db->affected_rows();
     }
   }
 }

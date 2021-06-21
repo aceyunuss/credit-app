@@ -21,6 +21,7 @@ class AssessmentCriteria extends Core_Controller
   public function updateCriteria($id)
   {
     $data['criteria'] = $this->Criteria_m->getCriteria($id)->row_array();
+    $data['idx_list'] = $this->Criteria_m->getIndexCriteria("", $id)->result_array();
     $this->template("criteria_index_v", "Indeks Penilaian", $data);
   }
 
@@ -29,8 +30,38 @@ class AssessmentCriteria extends Core_Controller
   {
 
     $post = $this->input->post();
-    echo '<pre>';
-    var_dump($post);
-    die();
+    $del = [];
+
+    $this->db->trans_begin();
+
+    foreach ($post['val'] as $k => $v) {
+
+      $idx = !empty($post['idx'][$k]) ?  $post['idx'][$k] : "";
+
+      $upd = [
+        'cid'   => $post['cid'],
+        'index' => $post['val'][$k],
+        'desc'  => $post['desc'][$k],
+      ];
+
+
+      $act = $this->Criteria_m->replaceIndexCriteria($idx, $upd);
+
+      if ($act) {
+        $del[] = $act;
+      }
+    }
+
+    $this->Criteria_m->deleteIfNotExistIndex($post['cid'], $del);
+
+    if ($this->db->trans_status() !== FALSE) {
+      $this->db->trans_commit();
+      $this->session->set_userdata('result', 'Sukses mengubah data');
+    } else {
+      $this->db->trans_rollback();
+      $this->session->set_userdata('result', 'Gagal mengubah data');
+    }
+
+    redirect('assessmentcriteria/updatecriteria/' . $post['cid']);
   }
 }

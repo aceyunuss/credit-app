@@ -58,7 +58,6 @@
 
 
       let act = $('#act_menu').val();
-      console.log(act)
       $('.' + act).addClass('active');
     });
   </script>
