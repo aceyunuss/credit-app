@@ -192,4 +192,8 @@ class Auth extends Core_Controller
     }
     redirect('auth/profile');
   }
+
+  public function nf(){
+    $this->template("nf_v", "Not Found");
+  }
 }
