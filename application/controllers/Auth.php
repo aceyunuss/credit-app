@@ -90,6 +90,13 @@ class Auth extends Core_Controller
 
     $this->db->trans_begin();
 
+    $check = $this->User_m->getUserByEmail($post['email'])->num_rows();
+
+    if ($check > 0) {
+      $this->session->set_userdata('result', 'Email sudah terdaftar');
+      redirect('auth/register');
+    }
+
     $this->User_m->createUser($ins);
 
     if ($this->db->trans_status() !== FALSE) {
