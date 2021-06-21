@@ -13,7 +13,7 @@ class Criteria_m extends CI_Model
     if (!empty($id)) {
       $this->db->where(['id' => $id]);
     }
-    return $this->db->get("adm_criteria");
+    return $this->db->get("criteria");
   }
 
 
@@ -25,20 +25,20 @@ class Criteria_m extends CI_Model
     if (!empty($cid)) {
       $this->db->where(['cid' => $cid]);
     }
-    return $this->db->get("adm_index");
+    return $this->db->get("criteria_index");
   }
 
 
   public function updateIndexCriteria($id, $input)
   {
-    $this->db->where(['id' => $id])->update("adm_index", $input);
+    $this->db->where(['id' => $id])->update("criteria_index", $input);
     return $this->db->affected_rows();
   }
 
 
   public function insertIndexCriteria($input)
   {
-    $this->db->insert("adm_index", $input);
+    $this->db->insert("criteria_index", $input);
     return $this->db->affected_rows();
   }
 
@@ -75,7 +75,7 @@ class Criteria_m extends CI_Model
   public function deleteIfNotExistIndex($id, $deleted)
   {
     if (!empty($id) && !empty($deleted)) {
-      $this->db->where_not_in("id", $deleted)->where("cid", $id)->delete("adm_index");
+      $this->db->where_not_in("id", $deleted)->where("cid", $id)->delete("criteria_index");
       return $this->db->affected_rows();
     }
   }
