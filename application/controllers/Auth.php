@@ -43,17 +43,23 @@ class Auth extends Core_Controller
       $email = $this->input->post('email');
       $pass = md5($this->input->post('pass'));
 
+      if ($this->input->post('role') == 'c') {
+        $this->db->where(['role' => 'Konsumen']);
+      } else {
+        $this->db->where(['role !=' => 'Konsumen']);
+      }
+
       $user = $this->User_m->getUserLogin($email, $pass)->row_array();
 
       if (empty($user)) {
         $this->session->set_userdata('result', 'Email dan password tidak cocok. Silahkan cek kembali');
       }
 
-      $data_session = array(
+      $data_session = [
         'user_id' => $user['id'],
-        // 'type' => $type,
-        'name' => $user['fullname']
-      );
+        'role'    => $user['role'],
+        'name'    => $user['fullname']
+      ];
 
       $this->session->set_userdata($data_session);
 
@@ -82,6 +88,7 @@ class Auth extends Core_Controller
       'phone'         => $post['phone'],
       'address'       => $post['addr'],
       'birthdate'     => $birthdate,
+      'role'          => "Konsumen",
       'gender'        => $post['gender'],
       'password'      => md5($post['pass']),
       'created_date'  => date("Y-m-d H:i:s"),

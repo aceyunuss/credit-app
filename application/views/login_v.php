@@ -60,8 +60,11 @@
           <div class="card bg-secondary border-0 mb-0">
 
             <div class="card-body px-lg-5 py-lg-5">
+              <p class="h2 text-center tittl">Login Konsumen</p>
+              <br>
 
               <form role="form" method="POST" action="<?= site_url('auth/login') ?>">
+                <input type="hidden" id="tit" value="c" name="role">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
@@ -79,17 +82,17 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-info my-4">Sign in</button>
+                  <button type="submit" class="btn btn-info my-4">Masuk</button>
                 </div>
               </form>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="#" class="text-light"><small>Forgot password?</small></a>
+              <small><a href="#" id="swc" class="text-light">Login Sebagai Staff</a></small>
             </div>
-            <div class="col-6 text-right">
-              <a href="<?= site_url('auth/register') ?>" class="text-light"><small>Create new account</small></a>
+            <div class="col-6 text-right cons" style="display: true;">
+              <a href="<?= site_url('auth/register') ?>" class="text-light"><small>Daftar</small></a>
             </div>
           </div>
         </div>
@@ -102,24 +105,8 @@
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
           <div class="copyright text-center text-xl-left text-muted">
-            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            &copy; 2021
           </div>
-        </div>
-        <div class="col-xl-6">
-          <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -133,6 +120,35 @@
   <script src="<?= base_url('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') ?>"></script>
   <!-- Argon JS -->
   <script src="<?= base_url('assets/js/argon.js?v=1.2.0') ?>"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      $('#swc').click(function() {
+
+        if ($('#tit').val() == "s") {
+
+          st = "Konsumen";
+          ft = "Staff";
+          ds = "inline";
+          ti = "c";
+        } else {
+          st = "Staff";
+          ft = "Konsumen";
+          ds = "none";
+          ti = "s";
+        }
+        console.log(st)
+
+        $('.tittl').text("Login " + st)
+        $('#swc').text("Login Sebagai " + ft)
+        $('#tit').val(ti);
+        $('.cons').css({
+          'display': ds
+        })
+      })
+    })
+  </script>
 </body>
 
 </html>

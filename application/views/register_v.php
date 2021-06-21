@@ -48,7 +48,6 @@
         <div class="col-lg-6 col-md-8">
           <?php if (!empty($this->session->userdata('result'))) { ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <span class="alert-icon"><i class="ni ni-like-2"></i></span>
               <span class="alert-text"><?= $this->session->userdata('result'); ?></span>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -117,14 +116,14 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-info mt-4">Create account</button>
+                  <button type="submit" class="btn btn-info mt-4">Buat akun</button>
                 </div>
               </form>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="<?= site_url('auth') ?>" class="text-light"><small>Back to login</small></a>
+              <a href="<?= site_url('auth') ?>" class="text-light"><small>Kembali ke login</small></a>
             </div>
           </div>
         </div>
@@ -137,24 +136,8 @@
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
           <div class="copyright text-center text-xl-left text-muted">
-            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            &copy; 2021
           </div>
-        </div>
-        <div class="col-xl-6">
-          <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
