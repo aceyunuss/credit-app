@@ -25,6 +25,12 @@ class Submission_m extends CI_Model
       $this->db->where(['user_id' => $user]);
     }
     return $this->db->get("submission");
-    
+  }
+
+
+  public function insertSubmissionCriteria($data)
+  {
+    $this->db->insert_batch("submission_quest", $data);
+    return $this->db->affected_rows();
   }
 }

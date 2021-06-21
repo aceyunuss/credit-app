@@ -126,10 +126,32 @@
 
             <hr class="my-4">
 
-            <center>
-              <button type="submit" class="btn btn-info mt-5">Submit</button>
-            </center>
-            &nbsp;
+            <h6 class="heading-small text-muted mb-4">Pertanyaan</h6>
+            <div class="pl-lg-4">
+
+              <?php foreach ((array)$criteria as $ky => $val) { ?>
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <label class="form-control-label"><?= $val['desc'] ?></label>
+                      <select class="form-control" id="criteria" name="criteria[]" required>
+                        <option value="">---Pilih---</option>
+                        <?php foreach ((array)$criteria_index as $k => $v) {
+                          if ($val['id'] == $v['cid']) {   ?>
+                            <option value="<?= $v['cid'] . '-' . $v['id'] ?>"><?= $v['desc'] ?></option>
+                        <?php }
+                        } ?>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
+
+              <center>
+                <button type="submit" class="btn btn-info mt-5">Submit</button>
+              </center>
+              &nbsp;
+            </div>
           </div>
         </form>
       </div>

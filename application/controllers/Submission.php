@@ -6,7 +6,7 @@ class Submission extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m', 'Item_m', 'Submission_m']);
+    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m']);
     $this->load->library('email');
   }
 
@@ -16,6 +16,8 @@ class Submission extends Core_Controller
 
     $uid = $this->session->userdata('user_id');
 
+    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
+    $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
     $data['items'] = $this->Item_m->getItem()->result_array();
     $data['usr'] = $this->User_m->getUserById($uid)->row_array();
     $this->template("submission_v", "Pengajuan", $data);
@@ -57,7 +59,8 @@ class Submission extends Core_Controller
       'dp'                => $post['dp'],
       'installment'       => $post['installment'],
       'installment_name'  => $installment,
-      'insert_date'       => date("Y-m-d H:i:s")
+      'insert_date'       => date("Y-m-d H:i:s"),
+      'status'            => 'Menunggu Persetujuan'
     ];
 
     if (!empty($_FILES['ktp']['name'])) {
@@ -77,6 +80,19 @@ class Submission extends Core_Controller
     $this->db->trans_begin();
 
     $this->Submission_m->insertSubmission($ins);
+    $sid = $this->db->insert_id();
+
+    $crt = [];
+
+    foreach ($post['criteria'] as $key => $value) {
+      $ex = explode("-", $value);
+      $crt[] = [
+        'sid'   => $sid,
+        'cid'   => $ex[0],
+        'cidx'  => $ex[1]
+      ];
+    }
+    $this->Submission_m->insertSubmissionCriteria($crt);
 
     if ($this->db->trans_status() !== FALSE) {
       $this->db->trans_commit();
