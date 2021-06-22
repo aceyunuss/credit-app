@@ -63,7 +63,7 @@
               <div class="form-group">
                 <label class="form-control-label">Lampiran KTP</label>
                 <div class="custom-file">
-                  <p><a href="<?= site_url('submissionhist/dop/submission/' . $this->session->userdata('user_id') . '/' . $subs['ktp']) ?>" target="_blank"><?= $subs['ktp'] ?> </a></p>
+                  <p><a href="<?= site_url('submissionhist/dop/submission/' . $subs['user_id'] . '/' . $subs['ktp']) ?>" target="_blank"><?= $subs['ktp'] ?> </a></p>
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@
               <div class="form-group">
                 <label class="form-control-label">Lampiran KK</label>
                 <div class="custom-file">
-                  <p><a href="<?= site_url('submissionhist/dop/submission/' . $this->session->userdata('user_id') . '/' . $subs['kk']) ?>" target="_blank"><?= $subs['kk'] ?> </a></p>
+                  <p><a href="<?= site_url('submissionhist/dop/submission/' . $subs['user_id'] . '/' . $subs['kk']) ?>" target="_blank"><?= $subs['kk'] ?> </a></p>
                 </div>
               </div>
             </div>
