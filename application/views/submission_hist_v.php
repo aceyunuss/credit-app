@@ -35,7 +35,7 @@
             <?php foreach ((array)$subs as $key => $value) { ?>
               <tr>
                 <td align="center">
-                  <a class="btn btn-sm btn-info" href="<?= site_url('submission/detail/' . $value['id']) ?>">Lihat</a>
+                  <a class="btn btn-sm btn-info" href="<?= site_url('submissionhist/detail/' . $value['id']) ?>">Lihat</a>
                 </td>
                 <td align="center"><?= $value['insert_date'] ?></td>
                 <td><?= $value['item_name'] ?></td>

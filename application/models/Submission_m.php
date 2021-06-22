@@ -33,4 +33,17 @@ class Submission_m extends CI_Model
     $this->db->insert_batch("submission_quest", $data);
     return $this->db->affected_rows();
   }
+  
+
+  public function getSubmissionCriteria($id = "", $sid = "")
+  {
+    if (!empty($id)) {
+      $this->db->where(['id' => $id]);
+    }
+    if (!empty($sid)) {
+      $this->db->where(['sid' => $sid]);
+    }
+    return $this->db->get("submission_quest");
+  }
+
 }
