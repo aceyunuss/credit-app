@@ -154,26 +154,3 @@
     </div>
   </div>
 </div>
-
-
-<script>
-  $(function() {
-
-    $("#item").change(function() {
-      $.ajax({
-        url: "<?php echo site_url('submission/getinstallment?item='); ?>" + $("#item").val(),
-        type: "get",
-        dataType: "json",
-        success: function(data) {
-          $("#installment").html("");
-          $("#installment").append("<option value=''>---Pilih Angsuran---</option>");
-          $("#dp").val(data[0].dp)
-          $.each(data, function(index, row) {
-            $("#installment").append("<option value='" + row.id + "'>" + row.period + "</option>");
-          });
-
-        }
-      });
-    })
-  })
-</script>

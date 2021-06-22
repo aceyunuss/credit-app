@@ -26,8 +26,9 @@
             <tr align="center">
               <th scope="col">Aksi</th>
               <th scope="col">Nomor</th>
-              <th scope="col">Tanggal</th>
+              <th scope="col">Nama</th>
               <th scope="col">Nama Barang</th>
+              <th scope="col">Tanggal</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
@@ -38,9 +39,10 @@
                 <td align="center">
                   <a class="btn btn-sm btn-info" href="<?= site_url('submissionhist/detail/' . $value['id']) ?>">Lihat</a>
                 </td>
-                <td align="center"><?= $value['sub_number'] ?></th>
-                <td align="center"><?= $value['insert_date'] ?></td>
+                <td align="center"><?= $value['sub_number'] ?></td>
+                <td align="center"><?= $value['name'] ?></td>
                 <td><?= $value['item_name'] ?></td>
+                <td align="center"><?= $value['insert_date'] ?></td>
                 <td align="center"><?= $value['status'] ?></td>
               </tr>
             <?php } ?>
