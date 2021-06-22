@@ -33,7 +33,7 @@ class Submission_m extends CI_Model
     $this->db->insert_batch("submission_quest", $data);
     return $this->db->affected_rows();
   }
-  
+
 
   public function getSubmissionCriteria($id = "", $sid = "")
   {
@@ -46,4 +46,15 @@ class Submission_m extends CI_Model
     return $this->db->get("submission_quest");
   }
 
+
+  public function getNumber()
+  {
+    $this->db->where("YEAR(insert_date) =", date("Y"), false);
+    $this->db->select("COUNT(id) as urut");
+    $get = $this->db->get("submission")->row()->urut;
+    $get++;
+    $lst = str_repeat(0, 5 - strlen($get)) . $get;
+
+    return "PJ." . date("Ym") . "." . $lst;
+  }
 }

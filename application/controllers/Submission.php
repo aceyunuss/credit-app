@@ -46,9 +46,11 @@ class Submission extends Core_Controller
     $post = $this->input->post();
     $item = $this->Item_m->getItem($post['item'])->row()->name;
     $installment = $this->Item_m->getInstallmentItem($post['installment'])->row()->period;
+    $num = $this->Submission_m->getNumber();
 
     $ins = [
       'user_id'           => $uid,
+      'sub_number'        => $num,
       'name'              => $post['name'],
       'nik'               => $post['nik'],
       'store_addr'        => $post['store_addr'],
