@@ -128,22 +128,13 @@
         <h6 class="heading-small text-muted mb-4">Pertanyaan</h6>
         <div class="pl-lg-4">
 
-          <?php foreach ((array)$criteria as $ky => $val) {  ?>
+          <?php foreach ((array)$quest as $ky => $val) {  ?>
             <div class="row">
               <div class="col-md-9">
                 <div class="form-group">
-                  <label class="form-control-label"><?= $val['desc'] ?></label>
-                  <select class="form-control" id="criteria" name="criteria[]" disabled>
-                    <?php foreach ((array)$criteria_index as $k => $v) {
-                      if ($val['id'] == $v['cid']) {
-                        foreach ((array)$quest as $key => $value) {
-                          if ($value['cid'] == $val['id'] && $value['cidx'] == $v['id']) { ?>
-                            <option><?= $v['desc'] ?></option>
-                    <?php
-                          }
-                        }
-                      }
-                    } ?>
+                  <label class="form-control-label"><?= $val['cid_desc'] ?></label>
+                  <select class="form-control" id="criteria" disabled>
+                    <option><?= $val['cidx_desc'] ?></option>
                   </select>
                 </div>
               </div>

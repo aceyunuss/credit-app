@@ -79,4 +79,10 @@ class Criteria_m extends CI_Model
       return $this->db->affected_rows();
     }
   }
+
+
+  public function getMaxIndex($criteia)
+  {
+    return $this->db->select("max(`index`) as max")->get_where("criteria_index", ['cid' => $criteia])->row()->max;
+  }
 }

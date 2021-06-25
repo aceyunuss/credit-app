@@ -87,11 +87,18 @@ class Submission extends Core_Controller
     $crt = [];
 
     foreach ($post['criteria'] as $key => $value) {
-      $ex = explode("-", $value);
+      $ex = explode("|", $value);
+      $mx = $this->Criteria_m->getMaxIndex($ex[0]);
+
       $crt[] = [
-        'sid'   => $sid,
-        'cid'   => $ex[0],
-        'cidx'  => $ex[1]
+        'sid'       => $sid,
+        'cid'       => $ex[0],
+        'cid_desc'  => $ex[1],
+        'cidx'      => $ex[2],
+        'cidx_desc' => $ex[3],
+        'score'     => $ex[4],
+        'weight'    => $ex[5],
+        'max_score' => $mx
       ];
     }
     $this->Submission_m->insertSubmissionCriteria($crt);
