@@ -4,7 +4,7 @@
       <div class="card-header border-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Users</h3>
+            <h3 class="mb-0">Data Pengajuan</h3>
           </div>
         </div>
       </div>
@@ -12,24 +12,26 @@
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
             <tr align="center">
+              <th scope="col">Aksi</th>
+              <th scope="col">Nomor</th>
               <th scope="col">Nama</th>
-              <th scope="col">Email</th>
-              <th scope="col">No Telp</th>
-              <th scope="col">Role</th>
-              <th scope="col">Tanggal Daftar</th>
+              <th scope="col">Nama Barang</th>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
 
-            <?php foreach ((array)$list_user as $key => $value) { ?>
+            <?php foreach ((array)$asm as $key => $value) { ?>
               <tr>
-                <th scope="row"><?= $value['fullname'] ?></th>
-                <td><?= $value['email'] ?></td>
-                <td><?= $value['phone'] ?></td>
                 <td align="center">
-                  <div class="badge badge-primary"><?= $value['role'] ?></div>
+                  <a class="btn btn-sm btn-info" href="<?= site_url('submissionreport/detail/' . $value['id']) ?>">Lihat</a>
                 </td>
-                <td align="center"><?= $value['created_date'] ?></td>
+                <td align="center"><?= $value['sub_number'] ?></td>
+                <td align="center"><?= $value['name'] ?></td>
+                <td><?= $value['item_name'] ?></td>
+                <td align="center"><?= $value['insert_date'] ?></td>
+                <td align="center"><?= $value['status'] ?></td>
               </tr>
             <?php } ?>
           </tbody>
