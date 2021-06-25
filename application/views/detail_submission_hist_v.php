@@ -141,6 +141,22 @@
             </div>
           <?php } ?>
         </div>
+
+        <hr class="my-4">
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-md-12">
+              &nbsp;
+              <center>
+                <div class="alert alert-<?= $subs['status'] == 'Disetujui' ? 'success' : ($subs['status'] == 'Ditolak' ? 'danger' : 'primary') ?>">
+                  <b style="font-size: 20px;"><?= $subs['status'] ?></b>
+                </div>
+              </center>
+              &nbsp;
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
