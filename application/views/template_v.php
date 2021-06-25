@@ -60,6 +60,21 @@
       let act = $('#act_menu').val();
       $('.' + act).addClass('active');
     });
+
+
+    let role = "<?= $this->session->userdata('role') ?>"
+    switch (role) {
+      case "Konsumen":
+        $('.rm, .rs').hide();
+        break;
+      case "Staff":
+        $('.rm, .rc').hide();
+        break;
+      case "Manager":
+        $('.rc, .rs').hide();
+        break;
+        break;
+    }
   </script>
 
 </body>

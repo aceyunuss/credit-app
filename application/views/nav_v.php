@@ -22,43 +22,43 @@
                <span class="nav-link-text">Dashboard</span>
              </a>
            </li>
-           <li class="nav-item submission">
+           <li class="nav-item submission rc">
              <a class="nav-link submission" href="<?= site_url('submission') ?>">
                <i class="ni ni-send text-info"></i>
                <span class="nav-link-text">Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item submissionhist">
+           <li class="nav-item submissionhist rc">
              <a class="nav-link submissionhist" href="<?= site_url('submissionhist') ?>">
                <i class="ni ni-book-bookmark text-warning"></i>
                <span class="nav-link-text">Riwayat Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item users">
+           <li class="nav-item users rs">
              <a class="nav-link users" href="<?= site_url('users') ?>">
                <i class="ni ni-single-02 text-pink"></i>
                <span class="nav-link-text">Daftar User</span>
              </a>
            </li>
-           <li class="nav-item assessment">
+           <li class="nav-item assessment rs">
              <a class="nav-link assessment" href="<?= site_url('assessment') ?>">
                <i class="ni ni-ruler-pencil text-danger"></i>
                <span class="nav-link-text">Penilaian</span>
              </a>
            </li>
-           <li class="nav-item assessmentresult">
+           <li class="nav-item assessmentresult rs">
              <a class="nav-link assessmentresult" href="<?= site_url('assessmentresult') ?>">
                <i class="ni ni-paper-diploma text-primary"></i>
                <span class="nav-link-text">Hasil Penilaian</span>
              </a>
            </li>
-           <li class="nav-item submissionreport">
+           <li class="nav-item submissionreport rm">
              <a class="nav-link submissionreport" href="<?= site_url('submissionreport') ?>">
                <i class="ni ni-money-coins text-green"></i>
                <span class="nav-link-text">Laporan Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item assessmentcriteria">
+           <li class="nav-item assessmentcriteria rs">
              <a class="nav-link assessmentcriteria" href="<?= site_url('assessmentcriteria') ?>">
                <i class="ni ni-settings-gear-65 text-danger"></i>
                <span class="nav-link-text">Kriteria Penilaian</span>

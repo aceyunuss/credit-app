@@ -41,10 +41,10 @@
               <i class="ni ni-single-02"></i>
               <span>Profil</span>
             </a>
-            <a href="<?= site_url('auth/out') ?>" class="dropdown-item">
+            <!-- <a href="<?= site_url('auth/out') ?>" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Ubah Password</span>
-            </a>
+            </a> -->
             <div class="dropdown-divider"></div>
             <a href="<?= site_url('auth/out') ?>" class="dropdown-item">
               <i class="ni ni-user-run"></i>
