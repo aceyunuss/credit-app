@@ -6,17 +6,17 @@
         <div class="row">
           <div class="col">
             <h5 class="card-title text-uppercase text-muted mb-0">Total Pengguna</h5>
-            <span class="h2 font-weight-bold mb-0">350,897</span>
+            <span class="h2 font-weight-bold mb-0"><?= $usr ?></span>
           </div>
           <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-              <i class="ni ni-active-40"></i>
+            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+              <i class="ni ni-single-02"></i>
             </div>
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-          <span class="text-nowrap">Since last month</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round($today_user / $usr * 100) ?>%</span>
+          <span class="text-nowrap">Pengguna baru</span>
         </p>
       </div>
     </div>
@@ -28,17 +28,17 @@
         <div class="row">
           <div class="col">
             <h5 class="card-title text-uppercase text-muted mb-0">Total Pengajuan</h5>
-            <span class="h2 font-weight-bold mb-0">2,356</span>
+            <span class="h2 font-weight-bold mb-0"><?= $sub ?></span>
           </div>
           <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-              <i class="ni ni-chart-pie-35"></i>
+            <div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow">
+              <i class="ni ni-send"></i>
             </div>
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-          <span class="text-nowrap">Since last month</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round(($apr + $rjc) / $sub * 100) ?>%</span>
+          <span class="text-nowrap">Pengajuan selesai</span>
         </p>
       </div>
     </div>
@@ -49,18 +49,18 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Pengejuan Disetujui</h5>
-            <span class="h2 font-weight-bold mb-0">924</span>
+            <h5 class="card-title text-uppercase text-muted mb-0">Pengajuan Disetujui</h5>
+            <span class="h2 font-weight-bold mb-0"><?= $apr ?></span>
           </div>
           <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+            <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
               <i class="ni ni-money-coins"></i>
             </div>
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-          <span class="text-nowrap">Since last month</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round($apr / ($apr + $rjc) * 100) ?>%</span>
+          <span class="text-nowrap">Pengajuan disetujui</span>
         </p>
       </div>
     </div>
@@ -72,17 +72,17 @@
         <div class="row">
           <div class="col">
             <h5 class="card-title text-uppercase text-muted mb-0">Pengajuan Ditolak</h5>
-            <span class="h2 font-weight-bold mb-0">49,65%</span>
+            <span class="h2 font-weight-bold mb-0"><?= $rjc ?></span>
           </div>
           <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-              <i class="ni ni-chart-bar-32"></i>
+            <div class="icon icon-shape bg-gradient-danger text-white rounded-circle shadow">
+              <i class="ni ni-air-baloon"></i>
             </div>
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-          <span class="text-nowrap">Since last month</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round($rjc / ($apr + $rjc) * 100) ?>%</span>
+          <span class="text-nowrap">Pengajuan ditolak</span>
         </p>
       </div>
     </div>
@@ -95,9 +95,6 @@
         <div class="row align-items-center">
           <div class="col">
             <h3 class="mb-0">Page visits</h3>
-          </div>
-          <div class="col text-right">
-            <a href="#!" class="btn btn-sm btn-primary">See all</a>
           </div>
         </div>
       </div>
@@ -193,10 +190,7 @@
       <div class="card-header border-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Social traffic</h3>
-          </div>
-          <div class="col text-right">
-            <a href="#!" class="btn btn-sm btn-primary">See all</a>
+            <h3 class="mb-0">Pengguna Terbaru</h3>
           </div>
         </div>
       </div>
@@ -204,103 +198,18 @@
         <!-- Projects table -->
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
-            <tr>
-              <th scope="col">Referral</th>
-              <th scope="col">Visitors</th>
-              <th scope="col"></th>
+            <tr align="center">
+              <th scope="col">Nama Pengguna</th>
+              <th scope="col">Waktu Bergabung</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                Facebook
-              </th>
-              <td>
-                1,480
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">60%</span>
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                Facebook
-              </th>
-              <td>
-                5,480
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">70%</span>
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                Google
-              </th>
-              <td>
-                4,807
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">80%</span>
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                Instagram
-              </th>
-              <td>
-                3,678
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">75%</span>
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                twitter
-              </th>
-              <td>
-                2,645
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">30%</span>
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            <?php foreach ($new_user as $key => $value) { ?>
+              <tr>
+                <td><?= $value['fullname'] ?></td>
+                <td align="center"><?= $value['created_date'] ?></td>
+              </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>

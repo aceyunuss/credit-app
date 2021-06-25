@@ -49,25 +49,36 @@ class User_m extends CI_Model
     return $this->db->affected_rows();
   }
 
-  public function getSubs($id)
+  public function getSubs($id = "")
   {
-    return $this->db->select('id as total')->where(['user_id' => $id])->get("submission")->num_rows();
+    if (!empty($id)) {
+      $this->db->where(['user_id' => $id]);
+    }
+    return $this->db->select('id as total')->get("submission")->num_rows();
   }
 
-  public function getApprove($id)
+  public function getApprove($id = "")
   {
+
+    if (!empty($id)) {
+      $this->db->where(['user_id' => $id]);
+    }
+
     return $this->db
       ->select('id as total')
-      ->where(['user_id' => $id, 'status' => 'Disetujui'])
+      ->where(['status' => 'Disetujui'])
       ->get("submission")
       ->num_rows();
   }
 
-  public function getReject($id)
+  public function getReject($id = "")
   {
+    if (!empty($id)) {
+      $this->db->where(['user_id' => $id]);
+    }
     return $this->db
       ->select('id as total')
-      ->where(['user_id' => $id, 'status' => 'Ditolak'])
+      ->where(['status' => 'Ditolak'])
       ->get("submission")
       ->num_rows();
   }
