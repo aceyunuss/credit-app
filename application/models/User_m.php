@@ -48,4 +48,27 @@ class User_m extends CI_Model
     $this->db->where(['id' => $id])->update('user', $data);
     return $this->db->affected_rows();
   }
+
+  public function getSubs($id)
+  {
+    return $this->db->select('id as total')->where(['user_id' => $id])->get("submission")->num_rows();
+  }
+
+  public function getApprove($id)
+  {
+    return $this->db
+      ->select('id as total')
+      ->where(['user_id' => $id, 'status' => 'Disetujui'])
+      ->get("submission")
+      ->num_rows();
+  }
+
+  public function getReject($id)
+  {
+    return $this->db
+      ->select('id as total')
+      ->where(['user_id' => $id, 'status' => 'Ditolak'])
+      ->get("submission")
+      ->num_rows();
+  }
 }

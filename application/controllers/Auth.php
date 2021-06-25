@@ -157,7 +157,12 @@ class Auth extends Core_Controller
   public function profile()
   {
     $user = $this->session->userdata();
+
+    $data['sub'] = $this->User_m->getSubs($user['user_id']);
+    $data['apr'] = $this->User_m->getApprove($user['user_id']);
+    $data['rjc'] = $this->User_m->getReject($user['user_id']);
     $data['profile'] = $this->User_m->getUserById($user['user_id'])->row_array();
+
     $this->template("profile_v", "Profil", $data);
   }
 
@@ -193,7 +198,8 @@ class Auth extends Core_Controller
     redirect('auth/profile');
   }
 
-  public function nf(){
+  public function nf()
+  {
     $this->template("nf_v", "Not Found");
   }
 }

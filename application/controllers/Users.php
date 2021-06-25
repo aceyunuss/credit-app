@@ -19,6 +19,9 @@ class Users extends Core_Controller
 
   public function detail($id)
   {
+    $data['sub'] = $this->User_m->getSubs($id);
+    $data['apr'] = $this->User_m->getApprove($id);
+    $data['rjc'] = $this->User_m->getReject($id);
     $data['usr'] = $this->User_m->getUserbyId($id)->row_array();
     $this->template("detail_user_v", "Detail Pengguna Aplikasi", $data);
   }

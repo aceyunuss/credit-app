@@ -20,15 +20,15 @@
           <div class="col">
             <div class="card-profile-stats d-flex justify-content-center">
               <div>
-                <span class="heading text-success">22</span>
+                <span class="heading text-success"><?= $apr ?></span>
                 <span class="description">Disetujui</span>
               </div>
               <div>
-                <span class="heading text-primary">10</span>
+                <span class="heading text-primary"><?= $sub ?></span>
                 <span class="description">Pengajuan</span>
               </div>
               <div>
-                <span class="heading text-danger">89</span>
+                <span class="heading text-danger"><?= $rjc ?></span>
                 <span class="description">Ditolak</span>
               </div>
             </div>
