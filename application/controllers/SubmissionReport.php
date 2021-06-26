@@ -12,7 +12,7 @@ class SubmissionReport extends Core_Controller
 
   public function index()
   {
-    $this->db->where(['status' => 'Disetujui']);
+    $this->db->where(['status !=' => 'Menunggu Persetujuan']);
     $data['asm'] = $this->Assessment_m->getAssessment()->result_array();
     $this->template("submission_report_v", "Laporan Pengajuan", $data);
   }

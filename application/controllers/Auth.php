@@ -18,6 +18,8 @@ class Auth extends Core_Controller
       $this->load->view("login_v", $data);
     } else {
 
+      $this->load->model(['Item_m']);
+
       $data['usr'] = $this->User_m->getUser()->num_rows();
       $data['sub'] = $this->User_m->getSubs();
       $data['apr'] = $this->User_m->getApprove();
@@ -26,10 +28,12 @@ class Auth extends Core_Controller
       $this->db->where(['created_date >=' => date('Y-m-d')]);
       $data['today_user'] = $this->User_m->getUser()->num_rows();
 
-      $this->db->limit(5);
-      $this->db->order_by("id", "desc");
-      $data['new_user'] = $this->User_m->getUser()->result_array();
+      $this->db->limit(6);
+      $this->db->where(["pict !=" => NULL]);
+      $data['item'] = $this->Item_m->getItem()->result_array();
 
+      $data['role'] = $this->session->userdata('role');
+      
       $this->template('dashboard_v', "Dashboard", $data);
     }
   }

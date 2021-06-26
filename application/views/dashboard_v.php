@@ -1,3 +1,21 @@
+<?php if($role == "Konsumen"){ ?>
+<div class="row">
+  <div class="col-xl-12 col-md-12">
+    <div class="card card-stats">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h1 class="card-title text-uppercase text-muted mb-0">CV GEMILANG JAYA ELEKTRONIK</h1>
+          </div>
+        </div>
+        <p class="mt-3 mb-0 text-sm">
+          <h4 class="text-nowrap">Jl. Tebet Timur Dalam Raya No.57, RT.8/RW.11, Tebet Tim., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12820</h4>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } else { ?>
 <div class="row">
   <div class="col-xl-3 col-md-6">
     <div class="card card-stats">
@@ -37,7 +55,7 @@
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round(($apr + $rjc) / $sub * 100) ?>%</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) || !empty($rjc) || !empty($sub))  ? round(($apr + $rjc) / $sub * 100) : 0 ?>%</span>
           <span class="text-nowrap">Pengajuan selesai</span>
         </p>
       </div>
@@ -59,7 +77,7 @@
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round($apr / ($apr + $rjc) * 100) ?>%</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) || !empty($rjc) ) ? round($apr / ($apr + $rjc) * 100) : 0 ?>%</span>
           <span class="text-nowrap">Pengajuan disetujui</span>
         </p>
       </div>
@@ -81,138 +99,28 @@
           </div>
         </div>
         <p class="mt-3 mb-0 text-sm">
-          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= round($rjc / ($apr + $rjc) * 100) ?>%</span>
+          <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) || !empty($rjc) || !empty($sub))  ? round($rjc / ($apr + $rjc) * 100) : 0 ?>%</span>
           <span class="text-nowrap">Pengajuan ditolak</span>
         </p>
       </div>
     </div>
   </div>
 </div>
+
+<?php } ?>
 <div class="row">
-  <div class="col-xl-8">
-    <div class="card">
-      <div class="card-header border-0">
-        <div class="row align-items-center">
-          <div class="col">
-            <h3 class="mb-0">Page visits</h3>
-          </div>
+  <?php foreach($item as $k => $v){ ?>
+    <div class="col-xl-4">
+      <div class="card" style="width: 18rem;">
+        <center>
+        <img style="max-height:200px; max-width: 250px; height: 200px; width: 250x;" class="card-img-top" src="<?= base_url('assets/img/items/'.$v['pict']) ?>">
+      </center>
+        <div class="card-body">
+          <h5 class="card-title"><?= $v['name'] ?></h5>
         </div>
       </div>
-      <div class="table-responsive">
-        <!-- Projects table -->
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">Page name</th>
-              <th scope="col">Visitors</th>
-              <th scope="col">Unique users</th>
-              <th scope="col">Bounce rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                /argon/
-              </th>
-              <td>
-                4,569
-              </td>
-              <td>
-                340
-              </td>
-              <td>
-                <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                /argon/index.html
-              </th>
-              <td>
-                3,985
-              </td>
-              <td>
-                319
-              </td>
-              <td>
-                <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                /argon/charts.html
-              </th>
-              <td>
-                3,513
-              </td>
-              <td>
-                294
-              </td>
-              <td>
-                <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                /argon/tables.html
-              </th>
-              <td>
-                2,050
-              </td>
-              <td>
-                147
-              </td>
-              <td>
-                <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                /argon/profile.html
-              </th>
-              <td>
-                1,795
-              </td>
-              <td>
-                190
-              </td>
-              <td>
-                <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-  </div>
-  <div class="col-xl-4">
-    <div class="card">
-      <div class="card-header border-0">
-        <div class="row align-items-center">
-          <div class="col">
-            <h3 class="mb-0">Pengguna Terbaru</h3>
-          </div>
-        </div>
-      </div>
-      <div class="table-responsive">
-        <!-- Projects table -->
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
-            <tr align="center">
-              <th scope="col">Nama Pengguna</th>
-              <th scope="col">Waktu Bergabung</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($new_user as $key => $value) { ?>
-              <tr>
-                <td><?= $value['fullname'] ?></td>
-                <td align="center"><?= $value['created_date'] ?></td>
-              </tr>
-            <?php } ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+<?php } ?>
+
+
 </div>
