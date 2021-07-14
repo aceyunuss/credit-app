@@ -56,3 +56,10 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-xl-12">
+    <footer class="blockquote-footer">*Note : Jika pengajuan kredit telah di setujui maka silahkan hubungin bagian sales no whatsapp 087655672881</footer>
+    </blockquote>
+  </div>
+</div>

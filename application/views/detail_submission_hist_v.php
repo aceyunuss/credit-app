@@ -104,7 +104,7 @@
             <div class="col-md-9">
               <div class="form-group">
                 <label class="form-control-label">Uang Muka</label>
-                <input type="text" class="form-control" value="<?= $subs['dp'] ?>" name="dp" readonly id="dp">
+                <input type="text" class="form-control" value="<?= number_format($subs['dp'], 2, ',', '.')  ?>" name="dp" readonly id="dp">
               </div>
             </div>
           </div>

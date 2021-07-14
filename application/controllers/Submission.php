@@ -30,7 +30,8 @@ class Submission extends Core_Controller
 
     if (!empty($item_id)) {
       $rows = $this->Item_m->getInstallmentItem("", $item_id)->result_array();
-      $rows[0]['dp'] = $this->Item_m->getItem($item_id)->row()->dp;
+      $dp = $this->Item_m->getItem($item_id)->row()->dp;
+      $rows[0]['dp'] = number_format($dp, 2, ',', '.');
     } else {
       $rows = [];
     }
@@ -58,7 +59,7 @@ class Submission extends Core_Controller
       'phone'             => $post['phone'],
       'item'              => $post['item'],
       'item_name'         => $item,
-      'dp'                => $post['dp'],
+      'dp'                => str_replace(".", "", $post['dp'] ),
       'installment'       => $post['installment'],
       'installment_name'  => $installment,
       'insert_date'       => date("Y-m-d H:i:s"),
