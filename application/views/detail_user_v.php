@@ -86,7 +86,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-lg-11">
               <div class="form-group">
                 <label class="form-control-label" for="input-last-name">Alamat</label>
@@ -111,7 +111,7 @@
                 <p><?= $usr['gender'] == "m" ? "Laki-laki" : "Perempuan" ?> </p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

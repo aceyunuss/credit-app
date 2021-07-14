@@ -104,10 +104,10 @@ class Auth extends Core_Controller
       'fullname'      => $post['name'],
       'email'         => $post['email'],
       'phone'         => $post['phone'],
-      'address'       => $post['addr'],
-      'birthdate'     => $birthdate,
+      // 'address'       => $post['addr'],
+      // 'birthdate'     => $birthdate,
       'role'          => "Konsumen",
-      'gender'        => $post['gender'],
+      // 'gender'        => $post['gender'],
       'password'      => md5($post['pass']),
       'created_date'  => date("Y-m-d H:i:s"),
       'updated_date'  => date("Y-m-d H:i:s")
