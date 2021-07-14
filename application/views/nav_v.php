@@ -4,11 +4,10 @@
      <!-- Brand -->
      <div class="sidenav-header  align-items-center">
        <a class="navbar-brand" href="javascript:void(0)">
-         <img src="<?= base_url('assets/img/brand/gemilang.jpg"') ?>"  style="width: 120px; max-height: 10rem;" >
+         <img src="<?= base_url('assets/img/brand/blue.png" class="navbar-brand-img') ?>" alt="...">
        </a>
      </div>
-     <br>
-     <br>
+
      <input type="hidden" id="act_menu" value="<?= $this->uri->segment(1); ?>">
 
      <div class="navbar-inner">
@@ -63,6 +62,12 @@
              <a class="nav-link assessmentcriteria" href="<?= site_url('assessmentcriteria') ?>">
                <i class="ni ni-settings-gear-65 text-danger"></i>
                <span class="nav-link-text">Kriteria Penilaian</span>
+             </a>
+           </li>
+           <li class="nav-item item rs">
+             <a class="nav-link item" href="<?= site_url('item') ?>">
+               <i class="ni ni-app text-info"></i>
+               <span class="nav-link-text">Daftar Barang</span>
              </a>
            </li>
          </ul>
