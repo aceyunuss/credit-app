@@ -15,8 +15,6 @@
               <th scope="col">Aksi</th>
               <th scope="col">Kode</th>
               <th scope="col">Kriteria</th>
-              <th scope="col">Bobot</th>
-              <!-- <th scope="col">Tanggal Update</th> -->
             </tr>
           </thead>
           <tbody>
@@ -28,7 +26,6 @@
                 </td>
                 <td align="center"><?= $value['code'] ?></td>
                 <td ><?= $value['desc'] ?></td>
-                <td align="center"><?= $value['weight'] ?></td>
               </tr>
             <?php } ?>
           </tbody>
