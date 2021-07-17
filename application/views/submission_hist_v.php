@@ -35,8 +35,7 @@
           <tbody>
 
             <?php foreach ((array)$subs as $key => $value) {
-              $bd = $value['status'] == "Disetujui" ? "success" : ($value['status'] == "Ditolak" ? "danger" : "primary");
-            ?>
+              $bd = $value['status'] == "Disetujui" ? "success" : ($value['status'] == "Ditolak" ? "danger" : ($value['status'] == "Disetujui" ? "primary" : "warning"));            ?>
               <tr>
                 <td align="center">
                   <a class="btn btn-sm btn-info" href="<?= site_url('submissionhist/detail/' . $value['id']) ?>">Lihat</a>

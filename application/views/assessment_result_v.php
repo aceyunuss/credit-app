@@ -23,7 +23,7 @@
           <tbody>
 
             <?php foreach ((array)$asm as $key => $value) {
-              $bd = $value['status'] == "Disetujui" ? "success" : ($value['status'] == "Ditolak" ? "danger" : "primary");
+              $bd = $value['status'] == "Disetujui" ? "success" : ($value['status'] == "Ditolak" ? "danger" : ($value['status'] == "Disetujui" ? "primary" : "warning"));
             ?>
               <tr>
                 <td align="center">

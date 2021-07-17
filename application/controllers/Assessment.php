@@ -38,8 +38,20 @@ class Assessment extends Core_Controller
   {
     $post = $this->input->post();
 
+    switch ($post['status']) {
+      case 'y':
+        $status = "Disetujui";
+        break;
+      case 'd':
+        $status = "Survey Ulang";
+        break;
+      case 'y':
+        $status = "Ditolak";
+        break;
+    }
+
     $upd = [
-      'status'      => $post['status'] == "y" ? "Disetujui" : "Ditolak",
+      'status'      => $status,
       'score'       => $post['score'],
       'review_date' => date("Y-m-d H:i:s")
     ];

@@ -237,6 +237,7 @@
                 <center>
                   <input type="hidden" name="status" value="" id="status">
                   <button type="submit" class="btn btn-danger act" data-stat="n">Tidak Setuju</button>
+                  <button type="submit" class="btn btn-warning act" data-stat="d">Survey Ulang</button>
                   <button type="submit" class="btn btn-info act" data-stat="y">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setuju&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </center>
                 &nbsp;
