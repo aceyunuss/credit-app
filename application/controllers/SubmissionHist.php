@@ -27,6 +27,21 @@ class SubmissionHist extends Core_Controller
     $data['subs'] = $this->Submission_m->getSubmission($id)->row_array();
     $data['quest'] = $this->Submission_m->getSubmissionCriteria("", $id)->result_array();
 
+    switch ($data['subs']['status']) {
+      case 'Disetujui':
+        $data['badge'] = "success";
+        break;
+      case 'Survey Ulang':
+        $data['badge'] = "warning";
+        break;
+      case 'Ditolaj':
+        $data['badge'] = "danger";
+        break;
+      default:
+        $data['badge'] = "primary";
+        break;
+    }
+
     $this->template("detail_submission_hist_v", "Detail Riwayat Pengajuan", $data);
   }
 }

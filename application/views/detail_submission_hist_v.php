@@ -167,7 +167,7 @@
             <div class="col-md-12">
               &nbsp;
               <center>
-                <div class="alert alert-<?= $subs['status'] == 'Disetujui' ? 'success' : ($subs['status'] == 'Ditolak' ? 'danger' : 'primary') ?>">
+                <div class="alert alert-<?= $badge ?>">
                   <b style="font-size: 20px;"><?= $subs['status'] ?></b>
                 </div>
               </center>
