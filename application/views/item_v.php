@@ -43,7 +43,7 @@
                   <a class="btn btn-sm btn-danger" href="<?= site_url('item/delete/' . $value['id']) ?>">Hapus</a>
                 </td>
                 <td align="center">
-                  <img src="<?= base_url('uploads/item/' . $value['pict']) ?>" style="max-width: 70px; max-height:70px">
+                  <img src="<?= base_url('uploads/item/' . $value['pict']) ?>" style="max-width: 50px; max-height:50px">
                 </td>
                 <td align="center"><?= $value['name'] ?></td>
                 <td align="right"><?= number_format($value['price'], 2, ",", ".") ?></td>

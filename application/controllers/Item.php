@@ -6,7 +6,7 @@ class Item extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m', 'Item_m']);
+    $this->load->model(['User_m', 'Item_m', 'Criteria_m']);
     $this->load->library('email');
   }
 
@@ -20,21 +20,29 @@ class Item extends Core_Controller
 
   public function detail($id)
   {
+    $data['item_id'] = $id;
     $data['item'] = $this->Item_m->getItem($id)->row_array();
     $data['installment'] = $this->Item_m->getInstallmentItem("", $id)->result_array();
+
+    $this->db->join("item_criteria", "item_criteria.criteria_id=criteria.id and item_id=$id", "left");
+    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
+
     $this->template("detail_item_v", "Daftar Barang", $data);
   }
 
   public function add()
   {
+    $data['item_id'] = "";
     $data['item'] = [];
     $data['installment'] = [];
+    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
     $this->template("detail_item_v", "Daftar Barang", $data);
   }
 
   public function submitItem()
   {
     $post = $this->input->post();
+    $del = [];
 
     $item_id = isset($post['item_id']) ? $post['item_id'] : "";
 
@@ -79,6 +87,19 @@ class Item extends Core_Controller
     }
 
     $this->Item_m->deleteIfNotExistInstallment($item_id, $del);
+
+    foreach ($post['citem_id'] as $k => $v) {
+
+      $cid = !empty($post['citem_id'][$k]) ? $post['citem_id'][$k] : "";
+
+      $upd = [
+        'item_id'     => $item_id,
+        'criteria_id' => $k,
+        'item_weight' => $post['item_weight'][$k]
+      ];
+
+      $cact = $this->Item_m->replaceCriteria($cid, $upd);
+    }
 
     if ($this->db->trans_status() !== FALSE) {
       $this->db->trans_commit();

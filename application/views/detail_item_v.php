@@ -27,7 +27,7 @@
               <div class="col-lg-8">
                 <div class="form-group">
                   <label class="form-control-label" for="input-username">Nama</label>
-                  <input type="text" class="form-control" name="name">
+                  <input type="text" class="form-control" name="name" value="<?= isset($item['name']) ? $item['name'] : "" ?>" required>
                 </div>
               </div>
             </div>
@@ -36,7 +36,7 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label class="form-control-label" for="input-email">Kode</label>
-                  <input type="text" class="form-control" name="code" maxlength="10">
+                  <input type="text" class="form-control" name="code" value="<?= isset($item['kode_barang']) ? $item['kode_barang'] : "" ?>" maxlength="10" required>
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label class="form-control-label" for="input-email">Harga</label>
-                  <input type="number" class="form-control" name="price">
+                  <input type="number" class="form-control" name="price" value="<?= isset($item['price']) ? $item['price'] : "" ?>" required>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label class="form-control-label" for="input-email">DP</label>
-                  <input type="number" class="form-control" name="dp">
+                  <input type="number" class="form-control" name="dp" value="<?= isset($item['dp']) ? $item['dp'] : "" ?>" required>
                 </div>
               </div>
             </div>
@@ -64,13 +64,66 @@
                 <div class="form-group">
                   <label class="form-control-label" for="input-email">Gambar</label>
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="item" required>
+                    <input type="file" class="custom-file-input" name="item">
                     <label class="custom-file-label">Select file</label>
                   </div>
                 </div>
+                <?php if (isset($item['pict'])) { ?>
+                  <img src="<?= base_url('uploads/item/' . $item['pict']) ?>" style="max-width: 150px; max-height:150px; border: 2px solid lightgrey;  padding: 1rem;   border-radius: 7px;">
+                <?php } ?>
               </div>
             </div>
 
+          </div>
+
+          <br>
+          <hr>
+          <br>
+
+          <div class="row align-items-center">
+            <div class="col-12">
+              <h3 class="mb-0">Form Kriteria</h3>
+            </div>
+          </div>
+          <br>
+          <p></p>
+          <div class="pl-lg-5">
+            <div class="row">
+              <div class="col-lg-11">
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr align="center">
+                        <th style="width: 10%;" scope="col">No</th>
+                        <th style="width: 20%;" scope="col">Kode</th>
+                        <th style="width: 50%;" scope="col">Kriteria</th>
+                        <th style="width: 20%;" scope="col">Bobot</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tbl_criteria">
+                      <?php foreach ((array)$criteria as $ky => $val) { ?>
+                        <tr>
+                          <td class="text-center">
+                            <?= $ky + 1 ?>
+                            <input type="hidden" name="citem_id[<?= $val['id'] ?>]" value="<?= isset($val['citem_id']) ? $val['citem_id'] : "" ?>">
+                          </td>
+                          <td class="text-center">
+                            <?= $val['code'] ?>
+                          </td>
+                          <td>
+                            <?= $val['desc'] ?>
+                          </td>
+                          <td>
+                            <input type="number" class="form-control form-control-sm cr_bobot" min="1" max="100" name="item_weight[<?= $val['id'] ?>]" value="<?= isset($val['item_weight']) ? $val['item_weight'] : "" ?>">
+                          </td>
+                        </tr>
+                      <?php } ?>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
 
           <br>
@@ -153,6 +206,27 @@
 </div>
 
 <script>
+  $('form').submit(function(e) {
+
+    let total = 0;
+    let irow = $('.tbl_idi tr').length;
+
+    $('.cr_bobot').each(function(index) {
+      total += ($(this).val() != "") ? parseInt($(this).val()) : 0;
+    });
+
+    if (total != 100) {
+      e.preventDefault();
+      alert('Total bobot kriteria harus 100');
+    }
+
+    if (irow == 0) {
+      e.preventDefault();
+      alert('Angsuran tidak boleh kosong');
+    }
+  })
+
+
   $(document).ready(function() {
 
     $('.add_idi').click(function() {

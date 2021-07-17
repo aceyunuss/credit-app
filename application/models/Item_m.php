@@ -108,4 +108,59 @@ class Item_m extends CI_Model
       return $this->db->affected_rows();
     }
   }
+
+
+  public function getCriteria($id = "", $item_id = "")
+  {
+    if (!empty($id)) {
+      $this->db->where(['citem_id' => $id]);
+    }
+    if (!empty($item_id)) {
+      $this->db->where(['item_id' => $item_id]);
+    }
+    return $this->db->get("item_criteria");
+  }
+
+
+  public function updateCriteria($id, $input)
+  {
+    $this->db->where(['citem_id' => $id])->update("item_criteria", $input);
+    return $this->db->affected_rows();
+  }
+
+
+  public function insertCriteria($input)
+  {
+    $this->db->insert("item_criteria", $input);
+    return $this->db->affected_rows();
+  }
+
+
+  public function replaceCriteria($id, $input)
+  {
+    if (!empty($input)) {
+
+      if (!empty($id)) {
+
+        $check = $this->getCriteria($id, $input['item_id'])->row_array();
+
+        if (!empty($check)) {
+
+          $last_id = $check['citem_id'];
+          unset($input['citem_id']);
+          $this->updateCriteria($last_id, $input);
+        } else {
+
+          $this->insertCriteria($input);
+          $last_id = $this->db->insert_id();
+        }
+      } else {
+
+        $this->insertCriteria($input);
+        $last_id = $this->db->insert_id();
+      }
+
+      return $last_id;
+    }
+  }
 }
