@@ -45,7 +45,7 @@ class Assessment extends Core_Controller
       case 'd':
         $status = "Survey Ulang";
         break;
-      case 'y':
+      case 'n':
         $status = "Ditolak";
         break;
     }

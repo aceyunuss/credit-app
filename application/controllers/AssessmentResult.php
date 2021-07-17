@@ -35,7 +35,7 @@ class AssessmentResult extends Core_Controller
       case 'Survey Ulang':
         $data['badge'] = "warning";
         break;
-      case 'Ditolaj':
+      case 'Ditolak':
         $data['badge'] = "danger";
         break;
       default:

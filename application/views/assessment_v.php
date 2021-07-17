@@ -35,8 +35,7 @@
           <tbody>
 
             <?php foreach ((array)$subs as $key => $value) {
-              $bd = $value['status'] == "Disetujui" ? "success" : ($value['status'] == "Ditolak" ? "danger" : ($value['status'] == "Disetujui" ? "primary" : "warning"));
-            ?>
+              $bd = $value['status'] == "Disetujui" ? "success" : ($value['status'] == "Ditolak" ? "danger" : ($value['status'] == "Survey Ulang" ? "warning" : "primary")); ?>
               <tr>
                 <td align="center">
                   <a class="btn btn-sm btn-info" href="<?= site_url('assessment/process/' . $value['id']) ?>">Proses</a>
