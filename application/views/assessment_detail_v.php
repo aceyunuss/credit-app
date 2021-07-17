@@ -51,6 +51,15 @@
           <div class="row">
             <div class="col-lg-9">
               <div class="form-group">
+                <label class="form-control-label">Tempat Tanggal Lahir</label>
+                <p><?= $asm['birth_place'] . ", " . substr($asm['birth_date'], 0, 10) ?></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="form-group">
                 <label class="form-control-label">No Telp</label>
                 <p><?= $asm['phone'] ?></p>
               </div>

@@ -53,6 +53,15 @@
             <div class="row">
               <div class="col-lg-9">
                 <div class="form-group">
+                  <label class="form-control-label">Tempat Tanggal Lahir</label>
+                  <p><?= $subs['birth_place'] . ", " . substr($subs['birth_date'], 0, 10) ?></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="form-group">
                   <label class="form-control-label">No Telp</label>
                   <p><?= $subs['phone'] ?></p>
                 </div>

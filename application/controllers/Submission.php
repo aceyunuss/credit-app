@@ -16,6 +16,10 @@ class Submission extends Core_Controller
 
     $uid = $this->session->userdata('user_id');
 
+    $now = date("Y-m-d");
+    $date = strtotime($now . ' -17 year');
+    $data['mindate'] = date('Y-m-d', $date);
+
     $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
     $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
     $data['items'] = $this->Item_m->getItem()->result_array();
@@ -66,7 +70,9 @@ class Submission extends Core_Controller
       'installment'       => $post['installment'],
       'installment_name'  => $installment,
       'insert_date'       => date("Y-m-d H:i:s"),
-      'status'            => 'Menunggu Persetujuan'
+      'status'            => 'Menunggu Persetujuan',
+      'birth_place'       => $post['birth_place'],
+      'birth_date'        => $post['birth_date']
     ];
 
     if (!empty($_FILES['ktp']['name'])) {

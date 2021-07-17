@@ -53,6 +53,18 @@
             <div class="row">
               <div class="col-lg-9">
                 <div class="form-group">
+                  <label class="form-control-label">Tempat Tanggal Lahir</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="birth_place" maxlength="30" required>
+                    <input class="form-control" type="date" name="birth_date" max="<?= $mindate ?>" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="form-group">
                   <label class="form-control-label">No Telp</label>
                   <input type="number" class="form-control" name="phone" value="<?= $usr['phone'] ?>" required>
                 </div>

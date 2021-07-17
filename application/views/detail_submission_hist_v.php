@@ -52,6 +52,18 @@
           <div class="row">
             <div class="col-lg-9">
               <div class="form-group">
+                <label class="form-control-label">Tempat Tanggal Lahir</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" value="<?= $subs['birth_place'] ?>" readonly>
+                  <input class="form-control" type="date" value="<?= substr($subs['birth_date'], 0, 10) ?>" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="form-group">
                 <label class="form-control-label">No Telp</label>
                 <input type="number" class="form-control" value="<?= $subs['phone'] ?>" readonly>
               </div>
