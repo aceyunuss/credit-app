@@ -84,10 +84,11 @@
         <hr class="my-4">
 
         <h6 class="heading-small text-muted mb-4">Data Barang</h6>
-        <div class="pl-lg-4">
 
-          <div class="row">
-            <div class="col-lg-9">
+        <div class="row">
+          <div class="col-7">
+
+            <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Nama Barang</label>
                 <?php foreach ((array)$items as $k => $v) { ?>
@@ -95,19 +96,8 @@
                 <?php } ?>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-9">
-              <div class="form-group">
-                <label class="form-control-label">Uang Muka</label>
-                <p><?= $asm['dp'] ?></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-9">
+            <div class="col-12">
               <div class="form-group">
                 <label class="form-control-label">Angsuran</label>
                 <?php foreach ((array)$installment as $k => $v) { ?>
@@ -115,9 +105,25 @@
                 <?php } ?>
               </div>
             </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="form-control-label">Uang Muka</label>
+                <p><?= $asm['dp'] ?></p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-5">
+            <div class="col-12">
+              <div class="form-group">
+                <label class="form-control-label">Preview</label>
+                <p>
+                  <img id="prev_img" src="<?= base_url('uploads/item/' . $asm['item_pict']) ?>" style="max-width: 180px; max-height:180px; border: 2px solid lightgrey;  padding: 1rem;   border-radius: 7px;">
+              </div>
+            </div>
           </div>
         </div>
-
         <hr class="my-4">
 
         <h6 class="heading-small text-muted mb-4">Pertanyaan</h6>

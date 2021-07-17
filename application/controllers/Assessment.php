@@ -21,12 +21,15 @@ class Assessment extends Core_Controller
 
   public function process($id)
   {
-    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
-    $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
+
     $data['installment'] = $this->Item_m->getInstallmentItem()->result_array();
     $data['items'] = $this->Item_m->getItem()->result_array();
     $data['subs'] = $this->Submission_m->getSubmission($id)->row_array();
     $data['quest'] = $this->Submission_m->getSubmissionCriteria("", $id)->result_array();
+
+    $this->db->join("item_criteria", "item_criteria.criteria_id=criteria.id and item_id=" . $data['subs']['item'], "left");
+    $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
+    $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
 
     $this->template("process_assessment_v", "Proses Penilaian", $data);
   }
