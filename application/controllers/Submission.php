@@ -30,8 +30,10 @@ class Submission extends Core_Controller
 
     if (!empty($item_id)) {
       $rows = $this->Item_m->getInstallmentItem("", $item_id)->result_array();
-      $dp = $this->Item_m->getItem($item_id)->row()->dp;
-      $rows[0]['dp'] = number_format($dp, 2, ',', '.');
+      $itm = $this->Item_m->getItem($item_id)->row_array();
+      $rows[0]['dp'] = number_format($itm['dp'], 2, ',', '.');
+      $rows[0]['price'] = number_format($itm['price'], 2, ',', '.');
+      $rows[0]['pict'] = !empty($itm['pict']) ? base_url('uploads/item/' . $itm['pict']) :  base_url('assets/img/theme/noi.png');
     } else {
       $rows = [];
     }
@@ -45,7 +47,7 @@ class Submission extends Core_Controller
     $uid = $this->session->userdata('user_id');
 
     $post = $this->input->post();
-    $item = $this->Item_m->getItem($post['item'])->row()->name;
+    $itm = $this->Item_m->getItem($post['item'])->row_array();
     $installment = $this->Item_m->getInstallmentItem($post['installment'])->row()->period;
     $num = $this->Submission_m->getNumber();
 
@@ -58,8 +60,9 @@ class Submission extends Core_Controller
       'home_addr'         => $post['home_addr'],
       'phone'             => $post['phone'],
       'item'              => $post['item'],
-      'item_name'         => $item,
-      'dp'                => str_replace(".", "", $post['dp'] ),
+      'item_name'         => $itm['name'],
+      'item_pict'         => $itm['pict'],
+      'dp'                => str_replace(".", "", $post['dp']),
       'installment'       => $post['installment'],
       'installment_name'  => $installment,
       'insert_date'       => date("Y-m-d H:i:s"),
@@ -90,6 +93,7 @@ class Submission extends Core_Controller
     foreach ($post['criteria'] as $key => $value) {
       $ex = explode("|", $value);
       $mx = $this->Criteria_m->getMaxIndex($ex[0]);
+      $wg = $this->Item_m->getCriteria($ex[0], $post['item'])->row()->item_weight;
 
       $crt[] = [
         'sid'       => $sid,
@@ -98,7 +102,7 @@ class Submission extends Core_Controller
         'cidx'      => $ex[2],
         'cidx_desc' => $ex[3],
         'score'     => $ex[4],
-        'weight'    => $ex[5],
+        'weight'    => $wg,
         'max_score' => $mx
       ];
     }

@@ -85,10 +85,11 @@
         <hr class="my-4">
 
         <h6 class="heading-small text-muted mb-4">Data Barang</h6>
-        <div class="pl-lg-4">
 
-          <div class="row">
-            <div class="col-md-9">
+        <div class="row">
+          <div class="col-7">
+
+            <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Nama Barang</label>
                 <select class="form-control" id="item" readonly>
@@ -98,19 +99,8 @@
                 </select>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-9">
-              <div class="form-group">
-                <label class="form-control-label">Uang Muka</label>
-                <input type="text" class="form-control" value="<?= number_format($subs['dp'], 2, ',', '.')  ?>" name="dp" readonly id="dp">
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-9">
+            <div class="col-12">
               <div class="form-group">
                 <label class="form-control-label">Angsuran</label>
                 <select class="form-control" id="installment" disabled>
@@ -118,6 +108,23 @@
                     <option <?= $v['id'] == $subs['installment'] ? "selected" : "" ?>><?= $v['period'] ?></option>
                   <?php } ?>
                 </select>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="form-control-label">Uang Muka</label>
+                <input type="text" class="form-control" value="<?= number_format($subs['dp'], 2, ',', '.')  ?>" name="dp" readonly id="dp">
+              </div>
+            </div>
+
+          </div>
+          <div class="col-5">
+            <div class="col-12">
+              <div class="form-group">
+                <label class="form-control-label">Preview</label>
+                <p>
+                  <img id="prev_img" src="<?= base_url('uploads/item/' . $subs['item_pict']) ?>" style="max-width: 250px; max-height:250px; border: 2px solid lightgrey;  padding: 1rem;   border-radius: 7px;">
               </div>
             </div>
           </div>

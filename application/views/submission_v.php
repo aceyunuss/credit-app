@@ -88,10 +88,11 @@
           <hr class="my-4">
 
           <h6 class="heading-small text-muted mb-4">Data Barang</h6>
-          <div class="pl-lg-4">
 
-            <div class="row">
-              <div class="col-md-9">
+          <div class="row">
+            <div class="col-7">
+
+              <div class="col-md-12">
                 <div class="form-group">
                   <label class="form-control-label">Nama Barang</label>
                   <select class="form-control" id="item" name="item" required>
@@ -102,19 +103,8 @@
                   </select>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-9">
-                <div class="form-group">
-                  <label class="form-control-label">Uang Muka</label>
-                  <input type="text" class="form-control" value="" name="dp" readonly id="dp">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-9">
+              <div class="col-12">
                 <div class="form-group">
                   <label class="form-control-label">Angsuran</label>
                   <select class="form-control" id="installment" name="installment" required>
@@ -122,8 +112,26 @@
                   </select>
                 </div>
               </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label">Uang Muka</label>
+                  <input type="text" class="form-control" value="" name="dp" readonly id="dp">
+                </div>
+              </div>
+
+            </div>
+            <div class="col-5">
+              <div class="col-12">
+                <div class="form-group">
+                  <label class="form-control-label">Preview</label>
+                  <p>
+                    <img id="prev_img" src="<?= base_url('assets/img/theme/noi.png') ?>" style="max-width: 250px; max-height:250px; border: 2px solid lightgrey;  padding: 1rem;   border-radius: 7px;">
+                </div>
+              </div>
             </div>
           </div>
+
           <hr class="my-4">
 
           <h6 class="heading-small text-muted mb-4">Pertanyaan</h6>
@@ -172,6 +180,7 @@
           $("#installment").html("");
           $("#installment").append("<option value=''>---Pilih Angsuran---</option>");
           $("#dp").val(data[0].dp)
+          $("#prev_img").attr("src", data[0].pict)
           $.each(data, function(index, row) {
             $("#installment").append("<option value='" + row.id + "'>" + row.period + "</option>");
           });
