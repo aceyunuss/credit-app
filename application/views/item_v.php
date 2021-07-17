@@ -28,8 +28,9 @@
           <thead class="thead-light">
             <tr align="center">
               <th scope="col" style="width: 10%;">Aksi</th>
-              <th scope="col" style="width: 25%;">Gambar</th>
-              <th scope="col" style="width: 35%;">Nama</th>
+              <th scope="col" style="width: 20%;">Gambar</th>
+              <th scope="col" style="width: 15%;">Kode</th>
+              <th scope="col" style="width: 25%;">Nama</th>
               <th scope="col" style="width: 15%;">Harga</th>
               <th scope="col" style="width: 15%;">DP</th>
             </tr>
@@ -45,6 +46,7 @@
                 <td align="center">
                   <img src="<?= base_url('uploads/item/' . $value['pict']) ?>" style="max-width: 50px; max-height:50px">
                 </td>
+                <td align="center"><?= $value['kode_barang'] ?></td>
                 <td align="center"><?= $value['name'] ?></td>
                 <td align="right"><?= number_format($value['price'], 2, ",", ".") ?></td>
                 <td align="right"><?= number_format($value['dp'], 2, ",", ".") ?></td>
