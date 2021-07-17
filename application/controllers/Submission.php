@@ -99,7 +99,10 @@ class Submission extends Core_Controller
     foreach ($post['criteria'] as $key => $value) {
       $ex = explode("|", $value);
       $mx = $this->Criteria_m->getMaxIndex($ex[0]);
-      $wg = $this->Item_m->getCriteria($ex[0], $post['item'])->row()->item_weight;
+
+      $this->db->where("criteria_id", $ex[0]);
+      $wg = $this->Item_m->getCriteria("", $post['item'])->row()->item_weight;
+
 
       $crt[] = [
         'sid'       => $sid,
@@ -112,6 +115,7 @@ class Submission extends Core_Controller
         'max_score' => $mx
       ];
     }
+
     $this->Submission_m->insertSubmissionCriteria($crt);
 
     if ($this->db->trans_status() !== FALSE) {

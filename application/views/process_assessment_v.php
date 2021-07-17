@@ -200,7 +200,7 @@
                       <tr align="center">
                         <th scope="col">Normalisasi</th>
                         <?php foreach ($quest as $k => $v) { ?>
-                          <td><?= $v['score'] / $v['max_score'] ?></td>
+                          <td><?= round(($v['score'] / $v['max_score']), 2) ?></td>
                         <?php } ?>
                       </tr>
                       <tr align="center">
@@ -209,7 +209,7 @@
                         $score_tot = 0;
                         foreach ($quest as $k => $v) {
                           $score = ($v['score'] / $v['max_score']) * $v['weight']; ?>
-                          <td><?= $score ?></td>
+                          <td><?= $score = round($score, 2) ?></td>
                         <?php $score_tot += $score;
                         }
                         $label = $score_tot < 65 ? "Dibawah" : "Diatas";
