@@ -40,7 +40,7 @@
               <tr>
                 <td align="center">
                   <a class="btn btn-sm btn-info" href="<?= site_url('item/detail/' . $value['id']) ?>">Ubah</a>
-                  <a class="btn btn-sm btn-danger" href="<?= site_url('item/delete/' . $value['id']) ?>">Hapus</a>
+                  <a class="btn btn-sm btn-danger" href="<?= site_url('item/delete/' . $value['id']) ?>" onclick="return confirm('Apakah anda yakin akan menghapus barang?')">Hapus</a>
                 </td>
                 <td align="center">
                   <img src="<?= base_url('uploads/item/' . $value['pict']) ?>" style="max-width: 50px; max-height:50px">

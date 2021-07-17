@@ -111,4 +111,23 @@ class Item extends Core_Controller
 
     redirect('item/detail/' . $item_id);
   }
+
+
+  public function delete($id)
+  {
+
+    $this->db->trans_begin();
+
+    $this->Item_m->deleteItem($id);
+
+    if ($this->db->trans_status() !== FALSE) {
+      $this->db->trans_commit();
+      $this->session->set_userdata('result', 'Sukses menghapus data');
+    } else {
+      $this->db->trans_rollback();
+      $this->session->set_userdata('result', 'Gagal menghapus data');
+    }
+
+    redirect('item');
+  }
 }

@@ -163,4 +163,12 @@ class Item_m extends CI_Model
       return $last_id;
     }
   }
+
+
+  public function deleteItem($id)
+  {
+    $this->db->where("id", $id)->delete("items");
+    $this->db->where("item_id", $id)->delete("item_criteria");
+    $this->db->where("items_id", $id)->delete("installment");
+  }
 }
