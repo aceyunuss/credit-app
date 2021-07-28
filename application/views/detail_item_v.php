@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xl-12 order-xl-1">
     <form action="<?= site_url('item/submititem') ?>" method="POST" enctype="multipart/form-data">
+    <input type="hidden" value="<?= $item_id ?>" name="item_id" >
 
       <?php if (!empty($this->session->userdata('result'))) {
         $type = (strpos($this->session->userdata('result'), 'Sukses') !== false) ? "success" : "danger";  ?>

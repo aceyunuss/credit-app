@@ -44,7 +44,7 @@ class Item extends Core_Controller
     $post = $this->input->post();
     $del = [];
 
-    $item_id = isset($post['item_id']) ? $post['item_id'] : "";
+    $item_id = (isset($post['item_id']) && !empty($post['item_id'])) ? $post['item_id'] : "";
 
     $ins = [
       'kode_barang' => $post['code'],
