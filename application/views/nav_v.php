@@ -34,7 +34,7 @@
                <span class="nav-link-text">Riwayat Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item users rs">
+           <li class="nav-item users rs ra">
              <a class="nav-link users" href="<?= site_url('users') ?>">
                <i class="ni ni-single-02 text-pink"></i>
                <span class="nav-link-text">Daftar User</span>
@@ -58,13 +58,13 @@
                <span class="nav-link-text">Laporan Pengajuan</span>
              </a>
            </li>
-           <li class="nav-item assessmentcriteria rs">
+           <li class="nav-item assessmentcriteria ra">
              <a class="nav-link assessmentcriteria" href="<?= site_url('assessmentcriteria') ?>">
                <i class="ni ni-settings-gear-65 text-danger"></i>
                <span class="nav-link-text">Kriteria Penilaian</span>
              </a>
            </li>
-           <li class="nav-item item rs">
+           <li class="nav-item item ra">
              <a class="nav-link item" href="<?= site_url('item') ?>">
                <i class="ni ni-app text-info"></i>
                <span class="nav-link-text">Daftar Barang</span>

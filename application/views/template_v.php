@@ -65,14 +65,16 @@
     let role = "<?= $this->session->userdata('role') ?>"
     switch (role) {
       case "Konsumen":
-        $('.rm, .rs').hide();
+        $('.rm, .rs, .ra').hide();
         break;
       case "Staff":
-        $('.rm, .rc').hide();
+        $('.rm, .rc, .ra').hide();
         break;
       case "Manager":
-        $('.rc, .rs').hide();
+        $('.rc, .rs, .ra').hide();
         break;
+      case "Admin":
+        $('.rc, .rs, .rm').hide();
         break;
     }
   </script>
