@@ -4,10 +4,10 @@
      <!-- Brand -->
      <div class="sidenav-header  align-items-center">
        <a class="navbar-brand" href="javascript:void(0)">
-         <img src="<?= base_url('assets/img/brand/blue.png" class="navbar-brand-img') ?>" alt="...">
+         <img src="<?= base_url('assets/img/brand/gemilang.jpg"') ?>" style="width: 120px; max-height: 10rem;">
        </a>
      </div>
-
+     <br><br><br>
      <input type="hidden" id="act_menu" value="<?= $this->uri->segment(1); ?>">
 
      <div class="navbar-inner">
