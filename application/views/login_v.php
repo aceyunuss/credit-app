@@ -89,7 +89,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <small><a href="#" id="swc" class="text-light">Login Sebagai Staff/Manager</a></small>
+              <small><a href="#" id="swc" class="text-light">Login Sebagai Admin/Staff/Manager</a></small>
             </div>
             <div class="col-6 text-right cons" style="display: true;">
               <a href="<?= site_url('auth/register') ?>" class="text-light"><small>Daftar</small></a>
