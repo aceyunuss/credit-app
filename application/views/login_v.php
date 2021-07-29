@@ -129,11 +129,11 @@
         if ($('#tit').val() == "s") {
 
           st = "Konsumen";
-          ft = "Staff/Manager";
+          ft = "Admin/Staff/Manager";
           ds = "inline";
           ti = "c";
         } else {
-          st = "Staff/Manager";
+          st = "Admin/Staff/Manager";
           ft = "Konsumen";
           ds = "none";
           ti = "s";
