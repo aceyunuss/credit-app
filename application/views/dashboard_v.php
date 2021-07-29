@@ -55,7 +55,7 @@
             </div>
           </div>
           <p class="mt-3 mb-0 text-sm">
-            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) || !empty($rjc) || !empty($sub))  ? round(($apr + $rjc) / $sub * 100) : 0 ?>%</span>
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) && !empty($rjc) && !empty($sub))  ? round(($apr + $rjc) / $sub * 100) : 0 ?>%</span>
             <span class="text-nowrap">Pengajuan selesai</span>
           </p>
         </div>
@@ -77,7 +77,7 @@
             </div>
           </div>
           <p class="mt-3 mb-0 text-sm">
-            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) || !empty($rjc)) ? round($apr / ($apr + $rjc) * 100) : 0 ?>%</span>
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) && !empty($rjc)) ? round($apr / ($apr + $rjc) * 100) : 0 ?>%</span>
             <span class="text-nowrap">Pengajuan disetujui</span>
           </p>
         </div>
@@ -99,7 +99,7 @@
             </div>
           </div>
           <p class="mt-3 mb-0 text-sm">
-            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) || !empty($rjc) || !empty($sub))  ? round($rjc / ($apr + $rjc) * 100) : 0 ?>%</span>
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?= (!empty($apr) && !empty($rjc) && !empty($sub))  ? round($rjc / ($apr + $rjc) * 100) : 0 ?>%</span>
             <span class="text-nowrap">Pengajuan ditolak</span>
           </p>
         </div>
