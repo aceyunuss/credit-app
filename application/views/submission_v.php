@@ -95,6 +95,18 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="form-group">
+                  <label class="form-control-label">Lampiran Slip Gaji</label>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="gaji" required>
+                    <label class="custom-file-label">Select file</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <hr class="my-4">

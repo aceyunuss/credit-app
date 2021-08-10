@@ -89,6 +89,13 @@ class Submission extends Core_Controller
       $ins['kk'] = $upload;
     }
 
+    if (!empty($_FILES['gaji']['name'])) {
+      $dir = "submission_" . $uid;
+      $this->session->set_userdata("dir_upload", $dir);
+      $upload = $this->ups("gaji");
+      $ins['gaji'] = $upload;
+    }
+
     $this->db->trans_begin();
 
     $this->Submission_m->insertSubmission($ins);

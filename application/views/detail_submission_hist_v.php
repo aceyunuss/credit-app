@@ -92,6 +92,17 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="form-group">
+                <label class="form-control-label">Lampiran Slip Gaji</label>
+                <div class="custom-file">
+                  <p><a href="<?= site_url('submissionhist/dop/submission/' . $subs['user_id'] . '/' . $subs['gaji']) ?>" target="_blank"><?= $subs['gaji'] ?> </a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <hr class="my-4">
