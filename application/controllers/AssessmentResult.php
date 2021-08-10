@@ -6,7 +6,7 @@ class AssessmentResult extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m', 'Assessment_m', 'Submission_m', 'Criteria_m', 'Item_m']);
+    $this->load->model(['User_m', 'Assessment_m', 'Submission_m', 'Criteria_m', 'Item_m', 'Sales_m']);
     $this->load->library('email');
   }
 
@@ -27,7 +27,8 @@ class AssessmentResult extends Core_Controller
     $this->db->join("item_criteria", "item_criteria.criteria_id=criteria.id and item_id=" . $data['asm']['item'], "left");
     $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
     $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
-    
+    $data['sales'] = $this->Sales_m->getSales()->result_array();
+
     switch ($data['asm']['status']) {
       case 'Disetujui':
         $data['badge'] = "success";

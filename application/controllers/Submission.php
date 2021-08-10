@@ -6,7 +6,7 @@ class Submission extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m']);
+    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m', 'Sales_m']);
     $this->load->library('email');
   }
 
@@ -23,6 +23,7 @@ class Submission extends Core_Controller
     $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
     $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
     $data['items'] = $this->Item_m->getItem()->result_array();
+    $data['sales'] = $this->Sales_m->getSales()->result_array();
     $data['usr'] = $this->User_m->getUserById($uid)->row_array();
     $this->template("submission_v", "Pengajuan", $data);
   }
@@ -52,6 +53,7 @@ class Submission extends Core_Controller
 
     $post = $this->input->post();
     $itm = $this->Item_m->getItem($post['item'])->row_array();
+    $sales = $this->Sales_m->getSales($post['sales'])->row_array();
     $installment = $this->Item_m->getInstallmentItem($post['installment'])->row()->period;
     $num = $this->Submission_m->getNumber();
 
@@ -72,7 +74,9 @@ class Submission extends Core_Controller
       'insert_date'       => date("Y-m-d H:i:s"),
       'status'            => 'Menunggu Persetujuan',
       'birth_place'       => $post['birth_place'],
-      'birth_date'        => $post['birth_date']
+      'birth_date'        => $post['birth_date'],
+      'sales_id'          => $sales['sales_id'],
+      'sales_name'        => $sales['sales_name']
     ];
 
     if (!empty($_FILES['ktp']['name'])) {

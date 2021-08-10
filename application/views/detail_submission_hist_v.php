@@ -134,6 +134,17 @@
               </div>
             </div>
 
+            <div class="col-12">
+              <div class="form-group">
+                <label class="form-control-label">Nama Sales</label>
+                <select class="form-control" id="sales" disabled>
+                  <?php foreach ((array)$sales as $k => $v) { ?>
+                    <option <?= $v['sales_id'] == $subs['sales_id'] ? "selected" : "" ?>><?= $v['sales_name'] ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Uang Muka</label>

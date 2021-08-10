@@ -6,7 +6,7 @@ class SubmissionHist extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m']);
+    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m', 'Sales_m']);
     $this->load->library('email');
   }
 
@@ -26,6 +26,7 @@ class SubmissionHist extends Core_Controller
     $data['items'] = $this->Item_m->getItem()->result_array();
     $data['subs'] = $this->Submission_m->getSubmission($id)->row_array();
     $data['quest'] = $this->Submission_m->getSubmissionCriteria("", $id)->result_array();
+    $data['sales'] = $this->Sales_m->getSales()->result_array();
 
     switch ($data['subs']['status']) {
       case 'Disetujui':

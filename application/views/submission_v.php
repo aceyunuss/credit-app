@@ -139,6 +139,18 @@
 
               <div class="col-md-12">
                 <div class="form-group">
+                  <label class="form-control-label">Nama Sales</label>
+                  <select class="form-control" name="sales" required>
+                    <option value="">---Pilih Sales---</option>
+                    <?php foreach ((array)$sales as $k => $v) { ?>
+                      <option value="<?= $v['sales_id'] ?>"><?= $v['sales_name'] ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
                   <label class="form-control-label">Uang Muka</label>
                   <p>*Sesuai permintaan sales</p>
                 </div>

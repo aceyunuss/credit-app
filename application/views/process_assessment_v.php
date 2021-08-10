@@ -128,6 +128,16 @@
                 </div>
               </div>
 
+              
+              <div class="col-12">
+                <div class="form-group">
+                  <label class="form-control-label">Nama Sales</label>
+                  <?php foreach ((array)$sales as $k => $v) { ?>
+                    <?= $v['sales_id'] == $subs['sales_id'] ? "<p>" . $v['sales_name'] . "</p>" : "" ?>
+                  <?php } ?>
+                </div>
+              </div>
+
               <div class="col-md-12">
                 <div class="form-group">
                   <label class="form-control-label">Uang Muka</label>

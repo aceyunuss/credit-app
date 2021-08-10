@@ -16,6 +16,7 @@
               <th scope="col">Nomor</th>
               <th scope="col">Nama</th>
               <th scope="col">Nama Barang</th>
+              <th scope="col">Nama Sales</th>
               <th scope="col">Tanggal</th>
               <th scope="col">Status</th>
             </tr>
@@ -30,7 +31,8 @@
                 </td>
                 <td align="center"><?= $value['sub_number'] ?></td>
                 <td align="center"><?= $value['name'] ?></td>
-                <td><?= $value['item_name'] ?></td>
+                <td align="center"><?= $value['item_name'] ?></td>
+                <td align="center"><?= $value['sales_name'] ?></td>
                 <td align="center"><?= $value['insert_date'] ?></td>
                 <td align="center">
                   <div class="badge badge-<?= $bd ?>"><?= $value['status'] ?></div>

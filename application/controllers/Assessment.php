@@ -6,7 +6,7 @@ class Assessment extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m', 'Assessment_m']);
+    $this->load->model(['User_m', 'Item_m', 'Criteria_m', 'Submission_m', 'Assessment_m', 'Sales_m']);
     $this->load->library('email');
   }
 
@@ -30,6 +30,7 @@ class Assessment extends Core_Controller
     $this->db->join("item_criteria", "item_criteria.criteria_id=criteria.id and item_id=" . $data['subs']['item'], "left");
     $data['criteria'] = $this->Criteria_m->getCriteria()->result_array();
     $data['criteria_index'] = $this->Criteria_m->getIndexCriteria()->result_array();
+    $data['sales'] = $this->Sales_m->getSales()->result_array();
 
     $this->template("process_assessment_v", "Proses Penilaian", $data);
   }
