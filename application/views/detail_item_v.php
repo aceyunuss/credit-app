@@ -61,7 +61,7 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label class="form-control-label" for="input-email">DP</label>
-                  <input type="number" class="form-control" name="dp" value="<?= isset($item['dp']) ? $item['dp'] : "" ?>" required>
+                  <p>*Sesuai permintaan sales</p>
                 </div>
               </div>
             </div>

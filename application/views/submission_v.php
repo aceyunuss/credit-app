@@ -140,7 +140,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label class="form-control-label">Uang Muka</label>
-                  <input type="text" class="form-control" value="" name="dp" readonly id="dp">
+                  <p>*Sesuai permintaan sales</p>
                 </div>
               </div>
 
@@ -203,7 +203,7 @@
         success: function(data) {
           $("#installment").html("");
           $("#installment").append("<option value=''>---Pilih Angsuran---</option>");
-          $("#dp").val(data[0].dp)
+          // $("#dp").val(data[0].dp)
           $("#prev_img").attr("src", data[0].pict)
           $.each(data, function(index, row) {
             $("#installment").append("<option value='" + row.id + "'>" + row.period + "</option>");

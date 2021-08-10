@@ -137,7 +137,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Uang Muka</label>
-                <input type="text" class="form-control" value="<?= number_format($subs['dp'], 2, ',', '.')  ?>" name="dp" readonly id="dp">
+                <p>*Sesuai permintaan sales</p>
               </div>
             </div>
 

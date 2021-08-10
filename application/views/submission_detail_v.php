@@ -129,7 +129,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Uang Muka</label>
-                <p><?= $asm['dp'] ?></p>
+                <p>*Sesuai permintaan sales</p>
               </div>
             </div>
 

@@ -66,7 +66,7 @@ class Submission extends Core_Controller
       'item'              => $post['item'],
       'item_name'         => $itm['name'],
       'item_pict'         => $itm['pict'],
-      'dp'                => str_replace(".", "", $post['dp']),
+      // 'dp'                => str_replace(".", "", $post['dp']),
       'installment'       => $post['installment'],
       'installment_name'  => $installment,
       'insert_date'       => date("Y-m-d H:i:s"),
