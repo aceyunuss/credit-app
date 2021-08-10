@@ -6,14 +6,14 @@ class Sales extends Core_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Sales_m');
+    $this->load->model(['Sales_m', 'Submission_m']);
     $this->load->library('email');
   }
 
 
   public function index()
   {
-    $data['sales'] = $this->Sales_m->getSales()->result_array();
+    $data['sales'] = $this->Sales_m->getSalesRec()->result_array();
     $this->template("sales_v", "Daftar Sales", $data);
   }
 
@@ -23,14 +23,17 @@ class Sales extends Core_Controller
     $data['sales_id'] = $id;
     $data['sales'] = $this->Sales_m->getSales($id)->row_array();
 
-    $this->template("detail_sales_v", "Daftar Barang", $data);
+    $this->db->where(['sales_id'=>$id]);
+    $data['hist'] = $this->Submission_m->getSubmission()->result_array();
+
+    $this->template("detail_sales_v", "Daftar Sales", $data);
   }
 
   public function add()
   {
     $data['sales_id'] = "";
     $data['sales'] = [];
-    $this->template("detail_sales_v", "Daftar Barang", $data);
+    $this->template("detail_sales_v", "Daftar Sales", $data);
   }
 
   public function submitSales()

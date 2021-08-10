@@ -68,6 +68,7 @@ class Submission extends Core_Controller
       'item'              => $post['item'],
       'item_name'         => $itm['name'],
       'item_pict'         => $itm['pict'],
+      'item_price'        => $itm['price'],
       // 'dp'                => str_replace(".", "", $post['dp']),
       'installment'       => $post['installment'],
       'installment_name'  => $installment,

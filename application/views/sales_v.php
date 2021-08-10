@@ -42,8 +42,8 @@
                   <a class="btn btn-sm btn-danger" href="<?= site_url('sales/delete/' . $value['sales_id']) ?>" onclick="return confirm('Apakah anda yakin akan menghapus sales?')">Hapus</a>
                 </td>
                 <td align="center"><?= $value['sales_name'] ?></td>
-                <td align="right"><?= number_format(0,2, ",", ".") ?></td>
-                <td align="right"><?= number_format(0, 2, ",", ".") ?></td>
+                <td align="center"><?= $value['total'] ?></td>
+                <td align="right"><?= number_format($value['amount'],2, ",", ".") ?></td>
               </tr>
             <?php } ?>
           </tbody>

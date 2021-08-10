@@ -34,4 +34,17 @@ class Sales_m extends CI_Model
   {
     $this->db->where("sales_id", $id)->delete("sales");
   }
+
+  
+  public function getSalesRec($id = "")
+  {
+
+    if (!empty($id)) {
+      $this->db->where(['sales.sales_id' => $id]);
+    }
+
+    $this->db->select("sales.*, (select count(s.sales_id) from submission s where s.sales_id=sales.sales_id) as total, (select coalesce(sum(s.item_price * 1.2), 0) from submission s where s.sales_id=sales.sales_id) as amount");
+    return $this->db->get("sales");
+  }
+
 }
