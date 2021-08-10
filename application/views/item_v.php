@@ -32,7 +32,7 @@
               <th scope="col" style="width: 15%;">Kode</th>
               <th scope="col" style="width: 25%;">Nama</th>
               <th scope="col" style="width: 15%;">Harga</th>
-              <th scope="col" style="width: 15%;">DP</th>
+              <th scope="col" style="width: 15%;">Harga Jual</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,7 @@
                 <td align="center"><?= $value['kode_barang'] ?></td>
                 <td align="center"><?= $value['name'] ?></td>
                 <td align="right"><?= number_format($value['price'], 2, ",", ".") ?></td>
-                <td align="right"><?= number_format($value['dp'], 2, ",", ".") ?></td>
+                <td align="right"><?= number_format(($value['price'] * 1.2), 2, ",", ".") ?></td>
               </tr>
             <?php } ?>
           </tbody>

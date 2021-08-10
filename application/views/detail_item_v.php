@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xl-12 order-xl-1">
     <form action="<?= site_url('item/submititem') ?>" method="POST" enctype="multipart/form-data">
-    <input type="hidden" value="<?= $item_id ?>" name="item_id" >
+      <input type="hidden" value="<?= $item_id ?>" name="item_id">
 
       <?php if (!empty($this->session->userdata('result'))) {
         $type = (strpos($this->session->userdata('result'), 'Sukses') !== false) ? "success" : "danger";  ?>
@@ -46,7 +46,13 @@
               <div class="col-lg-5">
                 <div class="form-group">
                   <label class="form-control-label" for="input-email">Harga</label>
-                  <input type="number" class="form-control" name="price" value="<?= isset($item['price']) ? $item['price'] : "" ?>" required>
+                  <input type="number" class="form-control" name="price" id="realprice" value="<?= isset($item['price']) ? $item['price'] : "" ?>" required>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-email">Harga Jual</label>
+                  <input type="number" class="form-control" id="sellprice" value="<?= isset($item['price']) ? $item['price'] * 1.2 : "" ?>" disabled>
                 </div>
               </div>
             </div>
@@ -280,6 +286,11 @@
       $('#idesc').val("")
       $('#idi').val("")
     });
+
+    $(document).on('keyup', '#realprice', function() {
+      let price = $(this).val()
+      $('#sellprice').val(price * 1.2);
+    })
 
   });
 </script>
