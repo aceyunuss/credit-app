@@ -64,6 +64,12 @@
                <span class="nav-link-text">Kriteria Penilaian</span>
              </a>
            </li>
+           <li class="nav-item sales rs">
+             <a class="nav-link sales" href="<?= site_url('sales') ?>">
+               <i class="ni ni-badge text-info"></i>
+               <span class="nav-link-text">Sales</span>
+             </a>
+           </li>
            <li class="nav-item item ra">
              <a class="nav-link item" href="<?= site_url('item') ?>">
                <i class="ni ni-app text-info"></i>

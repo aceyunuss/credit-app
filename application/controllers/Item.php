@@ -50,7 +50,7 @@ class Item extends Core_Controller
       'kode_barang' => $post['code'],
       'name'        => $post['name'],
       'price'       => $post['price'],
-      'dp'          => $post['dp']
+      // 'dp'          => $post['dp']
     ];
 
     if (!empty($_FILES['item']['name'])) {
