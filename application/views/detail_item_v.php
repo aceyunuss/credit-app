@@ -123,11 +123,11 @@
                           </td>
                           <td class="text-center">
                             <div class="custom-control custom-radio custom-control-inline">
-                              <input type="radio" required id="r1<?= $val['id']?>" <?= (isset($val['type']) && $val['type'] == 'c') ? "checked" : "" ?> name="r<?= $val['id']?>" class="custom-control-input" value="c">
+                              <input type="radio" required id="r1<?= $val['id']?>" <?= (isset($val['type']) && $val['type'] == 'Cost') ? "checked" : "" ?> name="r<?= $val['id']?>" class="custom-control-input" value="Criteria">
                               <label class="custom-control-label" for="r1<?= $val['id']?>">Cost</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                              <input type="radio" required id="r2<?= $val['id']?>" <?= (isset($val['type']) && $val['type'] == 'b') ? "checked" : "" ?> name="r<?= $val['id']?>" class="custom-control-input" value="b">
+                              <input type="radio" required id="r2<?= $val['id']?>" <?= (isset($val['type']) && $val['type'] == 'Benefit') ? "checked" : "" ?> name="r<?= $val['id']?>" class="custom-control-input" value="Benefit">
                               <label class="custom-control-label" for="r2<?= $val['id']?>">Benefit</label>
                             </div>
                           </td>
