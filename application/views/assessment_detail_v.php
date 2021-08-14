@@ -180,7 +180,7 @@
               <label class="form-control-label">Bobot Kriteria</label>
               <p>
                 <?php foreach ((array)$criteria as $key => $value) { ?>
-              <p class="small"><?= $value['code'] . " - " . $value['desc'] . " <b>(" . $value['item_weight'] . ")</b> - " . $value['item_type'] ?></p>
+              <p class="small"><?= $value['code'] . " - " . $value['desc'] . " <b>(" . $value['weight'] . ")</b> - " . $value['item_type'] ?></p>
             <?php } ?>
             </div>
           </div>
