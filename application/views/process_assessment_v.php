@@ -128,7 +128,7 @@
                 </div>
               </div>
 
-              
+
               <div class="col-12">
                 <div class="form-group">
                   <label class="form-control-label">Nama Sales</label>
@@ -183,7 +183,7 @@
                 <label class="form-control-label">Bobot Kriteria</label>
                 <p>
                   <?php foreach ((array)$criteria as $key => $value) { ?>
-                <p class="small"><?= $value['code'] . " - " . $value['desc'] . " <b>(" . $value['item_weight'] . ")</b>" ?></p>
+                <p class="small"><?= $value['code'] . " - " . $value['desc'] . " <b>(" . $value['item_weight'] . ")</b> - " . $value['item_type'] ?></p>
               <?php } ?>
               </div>
             </div>
@@ -215,13 +215,23 @@
                       <tr align="center">
                         <th scope="col">Skor</th>
                         <?php foreach ($quest as $k => $v) { ?>
-                          <td><?= $v['score'] . '/' . $v['max_score'] ?></td>
+                          <td><?php
+                              if ($v['type'] == 'Cost') {
+                                echo ($v['min_score'] . '/' . $v['score']);
+                              } else {
+                                echo ($v['score'] . '/' . $v['max_score']);
+                              } ?></td>
                         <?php } ?>
                       </tr>
                       <tr align="center">
                         <th scope="col">Normalisasi</th>
                         <?php foreach ($quest as $k => $v) { ?>
-                          <td><?= round(($v['score'] / $v['max_score']), 2) ?></td>
+                          <td><?php
+                              if ($v['type'] == 'Cost') {
+                                echo (round(($v['min_score'] / $v['score']), 2));
+                              } else {
+                                echo (round(($v['score'] / $v['max_score']), 2));
+                              } ?></td>
                         <?php } ?>
                       </tr>
                       <tr align="center">
@@ -229,7 +239,11 @@
                         <?php
                         $score_tot = 0;
                         foreach ($quest as $k => $v) {
-                          $score = ($v['score'] / $v['max_score']) * $v['weight']; ?>
+                          if ($v['type'] == 'Cost') {
+                            $score = ($v['min_score'] / $v['score']) * $v['weight'];
+                          } else {
+                            $score = ($v['score'] / $v['max_score']) * $v['weight'];
+                          } ?>
                           <td><?= $score = round($score, 2) ?></td>
                         <?php $score_tot += $score;
                         }

@@ -111,9 +111,10 @@ class Submission extends Core_Controller
     foreach ($post['criteria'] as $key => $value) {
       $ex = explode("|", $value);
       $mx = $this->Criteria_m->getMaxIndex($ex[0]);
+      $mn = $this->Criteria_m->getMinIndex($ex[0]);
 
       $this->db->where("criteria_id", $ex[0]);
-      $wg = $this->Item_m->getCriteria("", $post['item'])->row()->item_weight;
+      $ic = $this->Item_m->getCriteria("", $post['item'])->row_array();
 
 
       $crt[] = [
@@ -123,8 +124,10 @@ class Submission extends Core_Controller
         'cidx'      => $ex[2],
         'cidx_desc' => $ex[3],
         'score'     => $ex[4],
-        'weight'    => $wg,
-        'max_score' => $mx
+        'weight'    => $ic['item_weight'],
+        'max_score' => $mx,
+        'min_score' => $mn,
+        'type'      => $ic['item_type']
       ];
     }
 

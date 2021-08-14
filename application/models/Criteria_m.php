@@ -85,4 +85,9 @@ class Criteria_m extends CI_Model
   {
     return $this->db->select("max(`index`) as max")->get_where("criteria_index", ['cid' => $criteia])->row()->max;
   }
+  
+  public function getMinIndex($criteia)
+  {
+    return $this->db->select("min(`index`) as min")->get_where("criteria_index", ['cid' => $criteia])->row()->min;
+  }
 }
