@@ -29,8 +29,9 @@
             <tr align="center">
               <th scope="col" style="width: 10%;">Aksi</th>
               <th scope="col" style="width: 20%;">Nama</th>
-              <th scope="col" style="width: 15%;">Jumlah Pendapatan</th>
-              <th scope="col" style="width: 25%;">Nilai Pendapatan</th>
+              <th scope="col" style="width: 10%;">Jumlah Pendapatan</th>
+              <th scope="col" style="width: 25%;">Omzet Pendapatan</th>
+              <th scope="col" style="width: 5%;">Detail Omzet</th>
             </tr>
           </thead>
           <tbody>
@@ -44,6 +45,9 @@
                 <td align="center"><?= $value['sales_name'] ?></td>
                 <td align="center"><?= $value['total'] ?></td>
                 <td align="right"><?= number_format($value['amount'],2, ",", ".") ?></td>
+                <td align="center">
+                  <a class="btn btn-sm btn-success" href="<?= site_url('sales/detail_omzet/' . $value['sales_id']) ?>">Lihat</a>
+                </td>
               </tr>
             <?php } ?>
           </tbody>

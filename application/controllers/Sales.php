@@ -24,10 +24,33 @@ class Sales extends Core_Controller
     $data['sales_id'] = $id;
     $data['sales'] = $this->Sales_m->getSales($id)->row_array();
 
-    $this->db->where(['sales_id'=>$id]);
+    $this->db->where(['sales_id' => $id]);
     $data['hist'] = $this->Submission_m->getSubmission()->result_array();
 
-    $this->template("detail_sales_v", "Daftar Sales", $data);
+    $this->template("detail_sales_v", "Detail Sales", $data);
+  }
+
+
+  public function detail_omzet($id)
+  {
+    $data['sales_id'] = $id;
+    $data['sales'] = $this->Sales_m->getSalesRec($id)->row_array();
+
+    $this->db->where(['sales_id' => $id]);
+    $data['hist'] = $this->Submission_m->getSubmission()->result_array();
+
+    $omzet = [];
+    $period = $this->Sales_m->getPeriod($id)->result_array();
+    
+    if (!empty($period)) {
+      foreach ($period as $key => $value) {
+        $omzet[$value['period'] . ' ' . $value['yr']] = $this->Sales_m->getOmzMonth($id, $value['mn'], $value['yr'])->result_array();
+      }
+    }
+
+    $data['omzet'] = $omzet;
+
+    $this->template("detail_omzet_v", "Detail Omzet", $data);
   }
 
   public function add()
