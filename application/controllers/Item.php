@@ -95,7 +95,8 @@ class Item extends Core_Controller
       $upd = [
         'item_id'     => $item_id,
         'criteria_id' => $k,
-        'item_weight' => $post['item_weight'][$k]
+        'item_weight' => $post['item_weight'][$k],
+        'type'        => $post['r' . $k]
       ];
 
       $cact = $this->Item_m->replaceCriteria($cid, $upd);

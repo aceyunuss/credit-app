@@ -103,8 +103,9 @@
                       <tr align="center">
                         <th style="width: 10%;" scope="col">No</th>
                         <th style="width: 20%;" scope="col">Kode</th>
-                        <th style="width: 50%;" scope="col">Kriteria</th>
-                        <th style="width: 20%;" scope="col">Bobot</th>
+                        <th style="width: 35%;" scope="col">Kriteria</th>
+                        <th style="width: 20%;" scope="col">Tipe</th>
+                        <th style="width: 15%;" scope="col">Bobot</th>
                       </tr>
                     </thead>
                     <tbody class="tbl_criteria">
@@ -119,6 +120,16 @@
                           </td>
                           <td>
                             <?= $val['desc'] ?>
+                          </td>
+                          <td class="text-center">
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" required id="r1<?= $val['id']?>" <?= (isset($val['type']) && $val['type'] == 'c') ? "checked" : "" ?> name="r<?= $val['id']?>" class="custom-control-input" value="c">
+                              <label class="custom-control-label" for="r1<?= $val['id']?>">Cost</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" required id="r2<?= $val['id']?>" <?= (isset($val['type']) && $val['type'] == 'b') ? "checked" : "" ?> name="r<?= $val['id']?>" class="custom-control-input" value="b">
+                              <label class="custom-control-label" for="r2<?= $val['id']?>">Benefit</label>
+                            </div>
                           </td>
                           <td>
                             <input type="number" class="form-control form-control-sm cr_bobot" min="1" max="100" name="item_weight[<?= $val['id'] ?>]" value="<?= isset($val['item_weight']) ? $val['item_weight'] : "" ?>">

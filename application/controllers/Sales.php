@@ -13,6 +13,7 @@ class Sales extends Core_Controller
 
   public function index()
   {
+    $data['hist'] = [];
     $data['sales'] = $this->Sales_m->getSalesRec()->result_array();
     $this->template("sales_v", "Daftar Sales", $data);
   }
