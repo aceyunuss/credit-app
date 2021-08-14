@@ -63,18 +63,23 @@
 
 
     let role = "<?= $this->session->userdata('role') ?>"
+    $('.menulist').hide();
     switch (role) {
       case "Konsumen":
-        $('.rm, .rs, .ra').hide();
+        // $('.rm, .rs, .ra').hide();
+        $('.rk').show();
         break;
       case "Staff":
-        $('.rm, .rc, .ra').hide();
+        // $('.rm, .rc, .ra').hide();
+        $('.rs').show();
         break;
       case "Manager":
-        $('.rc, .rs, .ra').hide();
+        // $('.rc, .rs, .ra').hide();
+        $('.rm').show();
         break;
       case "Admin":
-        $('.rc, .rs, .rm').hide();
+        // $('.rc, .rs, .rm').hide();
+        $('.ra').show();
         break;
     }
   </script>
