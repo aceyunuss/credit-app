@@ -67,7 +67,7 @@
     switch (role) {
       case "Konsumen":
         // $('.rm, .rs, .ra').hide();
-        $('.rk').show();
+        $('.rc').show();
         break;
       case "Staff":
         // $('.rm, .rc, .ra').hide();

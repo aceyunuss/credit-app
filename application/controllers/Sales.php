@@ -55,8 +55,8 @@ class Sales extends Core_Controller
 
   public function add()
   {
+    $data['hist'] = [];
     $data['sales_id'] = "";
-    $data['sales'] = [];
     $this->template("detail_sales_v", "Daftar Sales", $data);
   }
 
